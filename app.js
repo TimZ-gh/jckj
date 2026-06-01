@@ -10,8 +10,6 @@
     serializeResponse,
   } = window.SurveySchema;
 
-  const STORAGE_KEY = "cross_border_ai_survey_submissions";
-
   // GitHub Pages + Supabase setup:
   // 1. Run supabase-schema.sql in Supabase SQL Editor.
   // 2. Fill these two values with Project URL and anon public key.
@@ -30,7 +28,7 @@
     { id: "common", label: "通用流程" },
     { id: "department", label: "部门问题" },
     { id: "ai", label: "AI 改造" },
-    { id: "submit", label: "提交导出" },
+    { id: "submit", label: "确认提交" },
   ];
 
   const app = document.querySelector("#app");
@@ -62,13 +60,13 @@
         el("h1", { text: "业务流程与 AI 改造问卷" }),
         el("p", {
           class: "hero-text",
-          text: "请根据你负责的真实工作填写。系统会按部门展示对应问题，并把答案整理成可导出的结构化数据，方便后续梳理 SOP、人工节点和数据库设计。",
+          text: "请根据你负责的真实工作填写。系统会按部门展示对应问题，并把答案提交为结构化数据，方便后续梳理 SOP、人工节点和数据库设计。",
         }),
       ]),
       el("div", { class: "hero-panel" }, [
         metric("5", "填写步骤"),
         metric(String(DEPARTMENTS.length), "部门分流"),
-        metric(isSupabaseConfigured() ? "Supabase" : "本地导出", "数据收集"),
+        metric(isSupabaseConfigured() ? "Supabase" : "未配置", "数据收集"),
       ]),
     ]);
   }
@@ -195,23 +193,18 @@
 
   function renderSubmitStep() {
     const serialized = serializeResponse(state.response);
-    const submissions = loadSubmissions();
     return el("div", { class: "section-stack" }, [
-      sectionTitle("提交与导出", isSupabaseConfigured()
-        ? "提交后会保存到 Supabase，同时也会在当前浏览器保留一份备份。"
-        : "当前尚未配置 Supabase，提交会先保存在当前浏览器中；你也可以导出 JSON / CSV。"),
+      sectionTitle("确认提交", isSupabaseConfigured()
+        ? "请确认基本信息和部门无误。提交成功后，页面会自动清空并回到初始填写页面。"
+        : "当前尚未配置 Supabase。请先联系问卷负责人配置数据收集后再正式填写。"),
       el("div", { class: "summary-grid" }, [
         summaryItem("姓名", state.response.meta.name || "未填写"),
         summaryItem("部门", serialized.summary.departmentLabel),
         summaryItem("流程步骤", `${serialized.summary.stepCount} 条`),
-        summaryItem("本机提交", `${submissions.length} 条`),
+        summaryItem("数据去向", isSupabaseConfigured() ? "Supabase" : "未配置"),
       ]),
-      el("pre", { class: "export-preview", text: serialized.exportText }),
       el("div", { class: "button-row" }, [
         el("button", { class: "primary", type: "button", onclick: submitResponse, text: "提交当前问卷" }),
-        el("button", { type: "button", onclick: downloadJson, text: "导出 JSON" }),
-        el("button", { type: "button", onclick: downloadCsv, text: "导出 CSV" }),
-        el("button", { type: "button", onclick: copyCurrentJson, text: "复制当前答案" }),
       ]),
     ]);
   }
@@ -418,20 +411,18 @@
 
   async function submitResponse() {
     const serialized = serializeResponse(state.response);
-    const submissions = loadSubmissions();
-    submissions.push(serialized);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(submissions));
 
     if (isSupabaseConfigured()) {
       try {
         await submitToSupabase(serialized);
-        alert("已提交到 Supabase，并已在当前浏览器保留备份。");
+        alert("提交成功，感谢填写。页面将回到初始状态，方便下一位同事填写。");
+        resetSurvey();
       } catch (error) {
         console.error(error);
-        alert(`本地已保存，但提交 Supabase 失败：${error.message}`);
+        alert(`提交失败，请联系问卷负责人：${error.message}`);
       }
     } else {
-      alert("已提交到当前浏览器。本版本尚未配置 Supabase，可先导出 JSON / CSV。");
+      alert("当前尚未配置 Supabase，暂时不能正式提交。");
     }
     render();
   }
@@ -466,56 +457,9 @@
     return Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
   }
 
-  function loadSubmissions() {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    } catch {
-      return [];
-    }
-  }
-
-  function downloadJson() {
-    const submissions = loadSubmissions();
-    downloadFile("cross-border-ai-survey.json", JSON.stringify(submissions, null, 2), "application/json");
-  }
-
-  function downloadCsv() {
-    const rows = loadSubmissions();
-    const headers = ["提交时间", "姓名", "部门", "岗位", "平台", "流程步骤数", "AI 可辅助", "人工把控", "资料链接"];
-    const lines = [
-      headers.join(","),
-      ...rows.map((row) => [
-        row.submittedAt,
-        row.meta && row.meta.name,
-        row.summary && row.summary.departmentLabel,
-        row.meta && row.meta.role,
-        ((row.meta && row.meta.platforms) || []).join(" / "),
-        row.summary && row.summary.stepCount,
-        ((row.ai && row.ai.usefulAreas) || []).join(" / "),
-        ((row.ai && row.ai.humanOnly) || []).join(" / "),
-        row.attachments && row.attachments.links,
-      ].map(csvCell).join(",")),
-    ];
-    downloadFile("cross-border-ai-survey.csv", lines.join("\n"), "text/csv;charset=utf-8");
-  }
-
-  function csvCell(value = "") {
-    return `"${String(value || "").replaceAll('"', '""')}"`;
-  }
-
-  function downloadFile(filename, content, type) {
-    const blob = new Blob([content], { type });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    link.click();
-    URL.revokeObjectURL(url);
-  }
-
-  async function copyCurrentJson() {
-    await navigator.clipboard.writeText(JSON.stringify(serializeResponse(state.response), null, 2));
-    alert("当前答案 JSON 已复制。");
+  function resetSurvey() {
+    state.step = 0;
+    state.response = buildEmptyResponse();
   }
 
   render();

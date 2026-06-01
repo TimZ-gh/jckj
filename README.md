@@ -9,9 +9,8 @@
 - `index.html`：入口页面
 - `styles.css`：页面样式
 - `survey-data.js`：浏览器可直接加载的问题数据，本地双击 `index.html` 也能渲染
-- `app.js`：表单交互、Supabase 提交、导出逻辑
+- `app.js`：表单交互、Supabase 提交、提交后重置逻辑
 - `survey-schema.mjs`：Node 测试使用的问题结构镜像
-- `app.mjs`：早期模块版入口，当前页面不再依赖它
 - `supabase-schema.sql`：Supabase 建表和 RLS 策略
 - `tests/survey-schema.test.mjs`：基础结构测试
 
@@ -49,7 +48,7 @@ const SUPABASE_ANON_KEY = "你的 anon public key";
 6. 在 GitHub 仓库 Settings -> Pages 中启用 GitHub Pages。
 7. 把生成的网址发给客户填写。
 
-当前版本即使没有配置 Supabase，也会把提交保存在填写者浏览器的 `localStorage` 中，并支持导出 JSON / CSV。正式多人收集时建议配置 Supabase。
+当前版本面向多人填写场景：提交成功后不会在浏览器保留历史记录，会自动清空表单并回到初始页面，方便下一位同事继续填写。
 
 ## 验证
 

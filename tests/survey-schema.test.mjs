@@ -25,8 +25,16 @@ assert.ok(
   "expected common workflow questions"
 );
 assert.ok(
+  listingQuestions.common.some((question) => question.label === "开始工作前必须拿到哪些资料？"),
+  "expected direct SOP-oriented common questions"
+);
+assert.ok(
   listingQuestions.department.some((question) => question.id === "listing_platforms"),
   "expected listing-specific questions"
+);
+assert.ok(
+  listingQuestions.department.some((question) => question.label === "Listing 被打回的常见原因是什么？"),
+  "expected direct listing rework question"
 );
 assert.equal(
   getQuestionsForDepartment("unknown").department.length,
