@@ -357,6 +357,112 @@ h1 {
   transform: translateY(-50%);
 }
 
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.workflow-card,
+.material-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 10px 28px rgba(22, 33, 38, 0.06);
+}
+
+.workflow-card.highlight,
+.material-card.highlight {
+  background: var(--warehouse);
+  border-color: rgba(198, 106, 19, 0.28);
+}
+
+.workflow-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.workflow-title span {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--dark);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.workflow-title h3,
+.material-card h3 {
+  margin-bottom: 0;
+  font-size: 21px;
+}
+
+.workflow-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  counter-reset: step;
+}
+
+.workflow-steps li {
+  position: relative;
+  padding: 12px 12px 12px 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdfe;
+  line-height: 1.6;
+}
+
+.workflow-steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ai-soft);
+  color: var(--ai);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.workflow-steps b {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.workflow-steps span {
+  color: var(--muted);
+}
+
+.workflow-boundary {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.workflow-boundary p {
+  margin-bottom: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f4f7f9;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .boundary-board,
 .tag-matrix {
   display: grid;
@@ -439,6 +545,54 @@ h1 {
   width: 170px;
 }
 
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.material-card h4 {
+  margin: 14px 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.material-card ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 9px;
+  line-height: 1.7;
+}
+
+.material-card li {
+  color: var(--muted);
+}
+
+.material-card li b {
+  color: var(--ink);
+}
+
+.template-box {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px dashed rgba(37, 99, 235, 0.32);
+  background: var(--ai-soft);
+}
+
+.template-box b {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ai);
+}
+
+.template-box p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
 footer {
   max-width: 1192px;
   margin: 0 auto 48px;
@@ -452,8 +606,10 @@ footer {
 @media (max-width: 980px) {
   .hero-inner,
   .flow-notes,
+  .workflow-grid,
   .boundary-board,
-  .tag-matrix {
+  .tag-matrix,
+  .material-grid {
     grid-template-columns: 1fr;
   }
 
@@ -483,7 +639,7 @@ footer {
     min-width: 760px;
   }
 
-  #matrix {
+  #materials {
     overflow-x: auto;
   }
 }

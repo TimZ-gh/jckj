@@ -12,8 +12,8 @@
         <strong>精粹科技跨境电商项目</strong>
         <div>
           <a href="#swimlane">泳道图</a>
-          <a href="#warehouse">仓储寄样</a>
-          <a href="#matrix">准备矩阵</a>
+          <a href="#workflows">业务流转</a>
+          <a href="#materials">准备材料</a>
         </div>
       </nav>
 
@@ -41,7 +41,7 @@
         <div class="section-head">
           <p class="eyebrow">Business swimlane</p>
           <h2>业务主流程泳道图</h2>
-          <p>按部门拆分流程，不让客户从零描述，而是直接确认“部门、节点、流转关系”是否准确。</p>
+          <p>以下为我们基于前期沟通整理出的业务理解稿，供各位负责人快速确认部门分工、关键节点和跨部门流转关系。</p>
         </div>
 
         <div class="legend">
@@ -113,41 +113,126 @@
         </div>
       </section>
 
-      <section class="section compact-section" id="warehouse">
+      <section class="section compact-section" id="workflows">
         <div class="section-head">
-          <p class="eyebrow">Warehouse x BD</p>
-          <h2>仓储 / 寄样 / BD 专项流转</h2>
-          <p>这条链路建议作为现场重点确认对象，因为它会影响达人合作效率、样品成本和发布反馈回收。</p>
+          <p class="eyebrow">Key workflows</p>
+          <h2>关键业务工作流拆分</h2>
+          <p>以下每条工作流都可以作为现场访谈的独立确认对象。请各部门重点查看：节点是否完整、责任人是否准确、哪些环节需要人工确认。</p>
         </div>
 
-        <div class="subflow" aria-label="仓储寄样专项流转图">
-          <div class="sub-node bd">BD 确认达人</div>
-          <div class="arrow"></div>
-          <div class="sub-node bd">发起寄样申请</div>
-          <div class="arrow"></div>
-          <div class="sub-node warehouse">仓库确认库存</div>
-          <div class="arrow"></div>
-          <div class="sub-node warehouse">样品出库</div>
-          <div class="arrow"></div>
-          <div class="sub-node warehouse">物流跟踪</div>
-          <div class="arrow"></div>
-          <div class="sub-node bd">达人签收 / 发布</div>
-          <div class="arrow"></div>
-          <div class="sub-node data">效果回收</div>
-        </div>
+        <div class="workflow-grid">
+          <article class="workflow-card">
+            <div class="workflow-title">
+              <span>01</span>
+              <h3>Listing 上架流程</h3>
+            </div>
+            <ol class="workflow-steps">
+              <li><b>产品资料接收</b><span>产品图、规格、卖点、成本、库存、目标市场。</span></li>
+              <li><b>关键词与竞品整理</b><span>提取核心词、长尾词、竞品表达和平台限制。</span></li>
+              <li><b>Listing 初稿生成</b><span>标题、五点描述、详情页、多语言内容。</span></li>
+              <li><b>运营审核修改</b><span>确认卖点、价格、合规词、平台规则。</span></li>
+              <li><b>上架发布</b><span>录入平台、关联库存、记录版本。</span></li>
+              <li><b>效果回收</b><span>曝光、点击、转化、退货和打回原因进入复盘。</span></li>
+            </ol>
+            <div class="workflow-boundary">
+              <p><b>AI 可辅助：</b>关键词、标题、描述、多语言、违规词初筛。</p>
+              <p><b>人工确认：</b>最终卖点、价格、合规风险、发布版本。</p>
+            </div>
+          </article>
 
-        <div class="boundary-board">
-          <article class="boundary ai">
-            <h3>AI 可辅助</h3>
-            <p>库存提醒、寄样记录整理、异常状态汇总、达人跟进提醒。</p>
+          <article class="workflow-card">
+            <div class="workflow-title">
+              <span>02</span>
+              <h3>短视频制作流程</h3>
+            </div>
+            <ol class="workflow-steps">
+              <li><b>选题来源确认</b><span>爆款参考、产品卖点、平台趋势、达人反馈。</span></li>
+              <li><b>脚本 / 分镜生成</b><span>开头钩子、使用场景、卖点展开、CTA。</span></li>
+              <li><b>素材准备</b><span>产品图、实拍素材、口播、字幕、品牌限制。</span></li>
+              <li><b>AI 生成或剪辑</b><span>批量生成多个版本，保留 Prompt 和素材来源。</span></li>
+              <li><b>成片审核</b><span>检查产品呈现、合规、画面质量和平台适配。</span></li>
+              <li><b>发布与复盘</b><span>记录发布账号、链接、互动、转化和可复用模板。</span></li>
+            </ol>
+            <div class="workflow-boundary">
+              <p><b>AI 可辅助：</b>脚本、分镜、字幕、Prompt、多版本生成。</p>
+              <p><b>人工确认：</b>产品表达、成片质量、是否可发布。</p>
+            </div>
           </article>
-          <article class="boundary human">
-            <h3>人工必须确认</h3>
-            <p>是否寄样、寄哪个产品、库存是否真实可用、异常如何处理。</p>
+
+          <article class="workflow-card highlight">
+            <div class="workflow-title">
+              <span>03</span>
+              <h3>仓储 / 寄样 / BD 流程</h3>
+            </div>
+            <ol class="workflow-steps">
+              <li><b>BD 确认达人</b><span>确认达人账号、合作产品、报价和寄样必要性。</span></li>
+              <li><b>发起寄样申请</b><span>提交产品 SKU、数量、收件信息、期望寄出时间。</span></li>
+              <li><b>仓库确认库存</b><span>确认可用库存、样品状态、是否影响销售库存。</span></li>
+              <li><b>样品出库</b><span>记录出库人、出库时间、物流单号和异常情况。</span></li>
+              <li><b>物流与签收跟进</b><span>跟踪运输状态，确认达人是否收到样品。</span></li>
+              <li><b>发布链接回收</b><span>回收视频链接、发布时间、互动数据和销售反馈。</span></li>
+            </ol>
+            <div class="workflow-boundary">
+              <p><b>AI 可辅助：</b>库存提醒、寄样台账、物流状态、跟进提醒。</p>
+              <p><b>人工确认：</b>是否寄样、寄哪个 SKU、异常处理、达人合作判断。</p>
+            </div>
           </article>
-          <article class="boundary data">
-            <h3>需要沉淀</h3>
-            <p>寄样申请、出库记录、物流单号、达人签收、发布链接、效果数据。</p>
+
+          <article class="workflow-card">
+            <div class="workflow-title">
+              <span>04</span>
+              <h3>选品 / 采购 / 补货流程</h3>
+            </div>
+            <ol class="workflow-steps">
+              <li><b>候选产品收集</b><span>来源、市场、竞品、目标售价和预估毛利。</span></li>
+              <li><b>产品评估</b><span>供应稳定性、采购成本、物流限制、合规风险。</span></li>
+              <li><b>采购确认</b><span>供应商、起订量、交期、付款方式和质检要求。</span></li>
+              <li><b>入库同步</b><span>SKU、批次、数量、成本和可售状态进入库存表。</span></li>
+              <li><b>销售 / 寄样消耗反馈</b><span>结合销售、达人寄样、退货和库存周转判断补货。</span></li>
+              <li><b>补货决策</b><span>确认补货数量、时间、预算和优先级。</span></li>
+            </ol>
+            <div class="workflow-boundary">
+              <p><b>AI 可辅助：</b>产品资料整理、风险提示、补货预测初稿。</p>
+              <p><b>人工确认：</b>供应商选择、采购价格、补货预算。</p>
+            </div>
+          </article>
+
+          <article class="workflow-card">
+            <div class="workflow-title">
+              <span>05</span>
+              <h3>达人开发 / 合作流程</h3>
+            </div>
+            <ol class="workflow-steps">
+              <li><b>达人池收集</b><span>平台、账号、粉丝量、国家、类目、过往表现。</span></li>
+              <li><b>达人匹配</b><span>根据产品、价格带、国家和内容风格筛选。</span></li>
+              <li><b>邀约沟通</b><span>发送合作话术，记录报价、档期、寄样需求。</span></li>
+              <li><b>合作确认</b><span>确认合作形式、产品、发布时间和交付要求。</span></li>
+              <li><b>寄样联动</b><span>与仓库同步寄样申请、物流和签收状态。</span></li>
+              <li><b>效果沉淀</b><span>发布链接、播放、互动、转化和合作评价进入达人库。</span></li>
+            </ol>
+            <div class="workflow-boundary">
+              <p><b>AI 可辅助：</b>达人筛选、邀约话术、跟进提醒、效果归类。</p>
+              <p><b>人工确认：</b>合作价格、是否寄样、合作优先级。</p>
+            </div>
+          </article>
+
+          <article class="workflow-card">
+            <div class="workflow-title">
+              <span>06</span>
+              <h3>数据复盘 / 反哺流程</h3>
+            </div>
+            <ol class="workflow-steps">
+              <li><b>数据采集</b><span>Listing、视频、达人、销售、库存、退货、异常。</span></li>
+              <li><b>数据关联</b><span>把结果对应到产品、SKU、内容版本、达人和渠道。</span></li>
+              <li><b>表现归因</b><span>分析高转化、低转化、缺货、退货和内容问题。</span></li>
+              <li><b>结论沉淀</b><span>沉淀为产品标签、内容模板、达人标签和风险清单。</span></li>
+              <li><b>动作分发</b><span>同步给产品、采购、仓储、运营、内容和 BD。</span></li>
+              <li><b>下一轮优化</b><span>进入选品、补货、Listing、视频和达人合作调整。</span></li>
+            </ol>
+            <div class="workflow-boundary">
+              <p><b>AI 可辅助：</b>数据汇总、异常识别、复盘报告初稿。</p>
+              <p><b>人工确认：</b>投入方向、停止测试、补货和资源分配。</p>
+            </div>
           </article>
         </div>
       </section>
@@ -173,59 +258,119 @@
         </div>
       </section>
 
-      <section class="section" id="matrix">
+      <section class="section" id="materials">
         <div class="section-head">
           <p class="eyebrow">Meeting material matrix</p>
-          <h2>对齐会议准备材料矩阵</h2>
-          <p>不让各部门重写流程，只让他们带着已有资料和真实案例来确认。</p>
+          <h2>对齐会议准备材料</h2>
+          <p>请各部门负责人提前准备已有资料、真实案例和当前使用的表格 / 系统截图。无需重新整理成正式文档，能说明实际工作方式即可。</p>
         </div>
 
-        <table class="material-table">
-          <thead>
-            <tr>
-              <th>部门</th>
-              <th>请提前准备</th>
-              <th>现场重点确认</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>老板 / 管理层</td>
-              <td>优先级、关键风险、现有工具、验收指标</td>
-              <td>第一阶段优先跑通哪条链路；哪些节点必须老板确认</td>
-            </tr>
-            <tr>
-              <td>产品 / 采购</td>
-              <td>产品表、供应商表、成本交期、缺失字段案例</td>
-              <td>产品资料是否足够支撑 Listing、视频、BD 和仓储</td>
-            </tr>
-            <tr>
-              <td>仓储</td>
-              <td>库存表、出入库记录、寄样记录、异常记录</td>
-              <td>库存与 BD 寄样如何衔接；异常如何通知相关人员</td>
-            </tr>
-            <tr>
-              <td>Listing / 平台运营</td>
-              <td>历史 Listing、关键词表、平台规则、打回记录</td>
-              <td>哪些内容可 AI 生成；哪些必须人工审核</td>
-            </tr>
-            <tr>
-              <td>内容 / 视频</td>
-              <td>爆款样本、脚本模板、Prompt、成片、返工案例</td>
-              <td>脚本到成片如何流转；哪些返工原因最常见</td>
-            </tr>
-            <tr>
-              <td>BD / 达人</td>
-              <td>达人表、邀约话术、寄样记录、发布链接</td>
-              <td>达人、样品、发布效果能否对应到同一个产品</td>
-            </tr>
-            <tr>
-              <td>数据 / 复盘</td>
-              <td>数据表、复盘记录、效果样本、历史结论</td>
-              <td>数据能否对应产品、视频、达人、Listing 和库存</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="material-grid">
+          <article class="material-card">
+            <h3>老板 / 管理层</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>业务优先级：</b>当前最希望先提升的环节，例如内容产能、达人合作、上架效率、库存准确率、数据复盘。</li>
+              <li><b>关键风险：</b>不能出错的事项，例如价格错误、库存不准、平台违规、达人合作失控、样品成本失控。</li>
+              <li><b>现有工具：</b>目前使用的表格、ERP、平台后台、项目管理工具、聊天群和审批方式。</li>
+              <li><b>验收指标：</b>希望第一阶段看到的结果，例如节省人力、缩短周期、减少返工、数据可追踪。</li>
+            </ul>
+            <div class="template-box">
+              <b>可按这个格式准备：</b>
+              <p>第一阶段最想优化：______；最不能出错：______；目前主要工具：______；希望看到的结果：______。</p>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <h3>产品 / 采购</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>产品资料表：</b>SKU、产品名、规格、图片、卖点、目标国家、售价、成本、库存、供应商。</li>
+              <li><b>供应商资料：</b>供应商名称、联系方式、起订量、交期、采购价、历史问题。</li>
+              <li><b>缺失案例：</b>最近 2-3 个因为资料不全导致 Listing、视频或 BD 推进慢的例子。</li>
+              <li><b>补货判断：</b>目前如何决定补货，参考哪些销售、库存、达人寄样或采购周期数据。</li>
+            </ul>
+            <div class="template-box">
+              <b>产品资料模板：</b>
+              <p>SKU / 产品名 / 核心卖点 / 图片链接 / 成本 / 售价 / 供应商 / 交期 / 当前库存 / 适合国家 / 注意事项。</p>
+            </div>
+          </article>
+
+          <article class="material-card highlight">
+            <h3>仓储负责人</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>库存表：</b>SKU、可售库存、样品库存、锁定库存、更新时间、负责人。</li>
+              <li><b>出入库记录：</b>入库、销售出库、寄样出库、退货入库、异常调整记录。</li>
+              <li><b>寄样记录：</b>BD、达人、产品、数量、物流单号、寄出时间、签收状态。</li>
+              <li><b>异常案例：</b>缺货、错发、漏发、延迟、物流异常、库存不一致的真实案例。</li>
+            </ul>
+            <div class="template-box">
+              <b>寄样记录模板：</b>
+              <p>申请人 / 达人账号 / SKU / 数量 / 收件信息 / 库存确认 / 出库时间 / 物流单号 / 签收状态 / 异常说明。</p>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <h3>Listing / 平台运营</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>历史 Listing：</b>表现较好和表现较差的 Listing 各 2-3 条。</li>
+              <li><b>关键词资料：</b>核心关键词、竞品关键词、禁用词、平台规则。</li>
+              <li><b>审核记录：</b>平台打回、内部返工、违规风险、修改前后版本。</li>
+              <li><b>上架流程：</b>从收到产品资料到最终发布，中间经过哪些人确认。</li>
+            </ul>
+            <div class="template-box">
+              <b>Listing 样例模板：</b>
+              <p>SKU / 平台 / 标题 / 核心关键词 / 五点描述 / 审核人 / 打回原因 / 发布时间 / 效果数据。</p>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <h3>内容 / 视频团队</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>爆款参考：</b>近期参考的视频链接、账号、平台和适用产品。</li>
+              <li><b>脚本模板：</b>常用开头、场景、卖点表达、CTA、字幕格式。</li>
+              <li><b>Prompt / 成片：</b>已经使用过的 AI Prompt、生成结果、可复用素材。</li>
+              <li><b>返工案例：</b>最近成片被打回或重做的原因，例如卖点不准、画面差、违规、素材缺失。</li>
+            </ul>
+            <div class="template-box">
+              <b>视频复盘模板：</b>
+              <p>产品 / 选题来源 / 脚本版本 / Prompt / 成片链接 / 审核意见 / 发布链接 / 数据表现 / 可复用点。</p>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <h3>BD / 达人运营</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>达人表：</b>账号、平台、国家、类目、粉丝量、报价、合作状态、历史效果。</li>
+              <li><b>邀约话术：</b>常用私信、邮件、报价沟通、寄样说明模板。</li>
+              <li><b>合作记录：</b>已合作达人、产品、寄样、发布时间、发布链接、效果数据。</li>
+              <li><b>跟进问题：</b>沟通慢、寄样慢、不发布、链接回收难、效果难归因等实际案例。</li>
+            </ul>
+            <div class="template-box">
+              <b>达人合作模板：</b>
+              <p>达人账号 / 平台 / 国家 / 类目 / 适合产品 / 报价 / 寄样状态 / 发布链接 / 效果 / 后续评级。</p>
+            </div>
+          </article>
+
+          <article class="material-card">
+            <h3>数据 / 复盘负责人</h3>
+            <h4>建议准备</h4>
+            <ul>
+              <li><b>数据字段：</b>目前能拿到哪些数据，分别来自平台、ERP、达人、广告或人工表格。</li>
+              <li><b>复盘表：</b>现有周报、月报、项目复盘、达人复盘、视频复盘样例。</li>
+              <li><b>关联方式：</b>数据能否对应到 SKU、Listing、视频、达人、库存和订单。</li>
+              <li><b>历史结论：</b>过去复盘后形成过哪些有效动作，例如补货、停投、换达人、改 Listing。</li>
+            </ul>
+            <div class="template-box">
+              <b>复盘模板：</b>
+              <p>产品 / 渠道 / 内容或达人 / 投入 / 曝光 / 点击 / 转化 / 库存影响 / 问题归因 / 下一步动作。</p>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
 
