@@ -7,406 +7,270 @@
     <link rel="stylesheet" href="./workflow-blueprint.css">
   </head>
   <body>
-    <header class="hero">
+    <header class="hero" id="top">
       <nav class="topbar" aria-label="页面导航">
         <strong>精粹科技跨境电商项目</strong>
         <div>
-          <a href="#flow">主流程</a>
-          <a href="#nodes">节点拆解</a>
-          <a href="#alignment">对齐清单</a>
+          <a href="#map">流程图</a>
+          <a href="#matrix">三类边界</a>
+          <a href="#nodes">节点细节</a>
+          <a href="#alignment">对齐准备</a>
         </div>
       </nav>
 
-      <section class="hero-grid">
+      <section class="hero-layout">
         <div class="hero-copy">
           <p class="eyebrow">阶段性同步 · 流程理解版</p>
           <h1>跨境电商 AI 半自动化工作流蓝图</h1>
-          <p>
-            以下内容基于前期沟通整理，用于和老板及各部门负责人快速对齐业务链路、AI 提效点、人工把控点和数据沉淀方向。
-            这不是最终方案，而是一版可被标注、修正和补充的流程假设。
+          <p class="lead">
+            先用图对齐业务链路，再逐项校准 AI 提效点、人工把控点和数据沉淀点。以下内容不是最终方案，而是便于老板和负责人标注“对 / 不对 / 需补充”的流程假设。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#flow">查看业务主流程</a>
-            <a class="button" href="#alignment">查看访谈准备清单</a>
+            <a class="button primary" href="#map">看主流程图</a>
+            <a class="button" href="#alignment">看准备清单</a>
+          </div>
+          <div class="hero-mini-flow" aria-label="首屏业务链路摘要">
+            <span>产品 / 采购</span>
+            <span>仓储 / 寄样</span>
+            <span>Listing / 内容</span>
+            <span>视频 / 审核</span>
+            <span>BD / 发布</span>
+            <span>数据复盘</span>
           </div>
         </div>
-        <aside class="brief-card" aria-label="本阶段目标">
-          <span>本阶段目标</span>
-          <strong>先对齐流程，再深入访谈</strong>
-          <p>让各部门确认“对 / 不对 / 需要补充”，避免从零描述业务流程。</p>
-          <div class="brief-tags">
-            <b>AI 提效</b>
-            <b>人工把控</b>
-            <b>数据沉淀</b>
-          </div>
+
+        <aside class="focus-card">
+          <span>请各部门只做三件事</span>
+          <ol>
+            <li>标出不准确的节点</li>
+            <li>补充遗漏的流转</li>
+            <li>确认人工把控环节</li>
+          </ol>
         </aside>
       </section>
     </header>
 
     <main>
-      <section class="section intro">
-        <div class="section-title">
-          <p class="eyebrow">How to read</p>
-          <h2>这份蓝图如何使用</h2>
-        </div>
-        <div class="intro-grid">
-          <article>
-            <span class="num">01</span>
-            <h3>先确认主链路</h3>
-            <p>请老板和负责人先看整体流程是否完整，尤其是仓储、寄样、BD、发布反馈之间是否准确。</p>
-          </article>
-          <article>
-            <span class="num">02</span>
-            <h3>再确认节点边界</h3>
-            <p>每个节点都拆成输入、输出、AI 可辅助、人工必须确认、数据沉淀，方便现场逐项校准。</p>
-          </article>
-          <article>
-            <span class="num">03</span>
-            <h3>最后收敛访谈重点</h3>
-            <p>后续访谈不从零开始问，而是围绕错误点、遗漏点和最值得先改造的链路深入。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="flow">
-        <div class="section-title wide">
-          <p class="eyebrow">Business flow</p>
-          <h2>当前理解的业务主链路</h2>
-          <p>跨境电商业务不是单点内容生产，而是从产品、采购、仓储、上架、内容、分发到复盘的连续链路。</p>
+      <section class="section visual-first" id="map">
+        <div class="section-heading">
+          <p class="eyebrow">Main flow</p>
+          <h2>当前理解的业务主流程</h2>
+          <p>从产品、采购、仓储，到 Listing、内容、分发和复盘。仓储管理是连接库存、寄样、BD 和销售反馈的关键节点。</p>
         </div>
 
-        <div class="flow-map" aria-label="业务主流程图">
-          <article class="flow-node">
-            <small>01</small>
+        <div class="legend" aria-label="图例">
+          <span class="legend-ai">AI 可辅助</span>
+          <span class="legend-human">人工把控</span>
+          <span class="legend-data">数据沉淀</span>
+          <span class="legend-check">需客户确认</span>
+        </div>
+
+        <div class="flow-board" aria-label="跨境电商业务主流程图">
+          <article class="flow-tile">
+            <b>01</b>
+            <div class="icon product"></div>
             <h3>选品 / 产品资料</h3>
-            <p>确认产品信息、卖点、素材和目标市场。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>卖点、素材、目标市场</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>02</small>
+          <article class="flow-tile">
+            <b>02</b>
+            <div class="icon supply"></div>
             <h3>采购 / 供应链</h3>
-            <p>确认成本、供应商、交期和补货条件。</p>
-            <div class="chips"><span class="human">人工</span><span class="data">数据</span></div>
+            <p>成本、供应商、交期</p>
+            <div class="badges"><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node highlight">
-            <small>03</small>
+          <article class="flow-tile featured">
+            <b>03</b>
+            <div class="icon warehouse"></div>
             <h3>仓储管理</h3>
-            <p>入库、库存、出库、寄样、物流与异常。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>库存、出库、寄样、异常</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span><span class="check">确认</span></div>
           </article>
-          <article class="flow-node">
-            <small>04</small>
+          <article class="flow-tile">
+            <b>04</b>
+            <div class="icon listing"></div>
             <h3>Listing 上架</h3>
-            <p>生成标题、卖点、关键词和多语言文案。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>标题、关键词、多语言</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>05</small>
+          <article class="flow-tile">
+            <b>05</b>
+            <div class="icon script"></div>
             <h3>内容脚本 / Prompt</h3>
-            <p>基于产品与爆款模板生成脚本、分镜、Prompt。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>脚本、分镜、字幕</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>06</small>
+          <article class="flow-tile">
+            <b>06</b>
+            <div class="icon video"></div>
             <h3>视频制作</h3>
-            <p>AI 生成、人工剪辑、筛选可用成片。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>生成、剪辑、成片筛选</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>07</small>
+          <article class="flow-tile">
+            <b>07</b>
+            <div class="icon review"></div>
             <h3>审核确认</h3>
-            <p>确认合规、产品准确性、内容质量和发布风险。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>合规、质量、发布风险</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>08</small>
+          <article class="flow-tile">
+            <b>08</b>
+            <div class="icon bd"></div>
             <h3>BD / 达人分发</h3>
-            <p>达人匹配、邀约、寄样、跟进发布。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>匹配、邀约、寄样</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>09</small>
+          <article class="flow-tile">
+            <b>09</b>
+            <div class="icon publish"></div>
             <h3>发布 / 销售转化</h3>
-            <p>平台发布、达人发布、销售和转化跟踪。</p>
-            <div class="chips"><span class="human">人工</span><span class="data">数据</span></div>
+            <p>发布、销售、转化跟踪</p>
+            <div class="badges"><span class="human">人</span><span class="data">数</span></div>
           </article>
-          <article class="flow-node">
-            <small>10</small>
+          <article class="flow-tile">
+            <b>10</b>
+            <div class="icon data"></div>
             <h3>数据复盘</h3>
-            <p>将产品、内容、达人、库存和销售反馈反哺下一轮。</p>
-            <div class="chips"><span class="ai">AI</span><span class="human">人工</span><span class="data">数据</span></div>
+            <p>复盘、反哺、下一轮</p>
+            <div class="badges"><span class="ai">AI</span><span class="human">人</span><span class="data">数</span></div>
           </article>
+        </div>
+
+        <div class="warehouse-strip">
+          <strong>仓储链路重点确认：</strong>
+          <span>BD 寄样申请</span>
+          <span>库存可用性</span>
+          <span>样品出库</span>
+          <span>物流追踪</span>
+          <span>达人签收</span>
+          <span>发布效果回收</span>
         </div>
       </section>
 
-      <section class="section split">
-        <div class="section-title">
-          <p class="eyebrow">Principle</p>
-          <h2>AI 和人的分工原则</h2>
-          <p>我们不建议直接做全自动系统，而是先把重复劳动、资料整理和生成工作交给 AI，把风险判断和关键确认留给人。</p>
+      <section class="section" id="matrix">
+        <div class="section-heading compact">
+          <p class="eyebrow">Boundaries</p>
+          <h2>AI / 人工 / 数据三类边界</h2>
+          <p>客户先看这个矩阵，就能理解系统不是全自动，而是半自动协作。</p>
         </div>
-        <div class="principle-grid">
-          <article class="principle ai-card">
-            <h3>AI 负责提效</h3>
-            <p>整理资料、生成初稿、拆解爆款、批量改写、匹配推荐、检查提醒、复盘总结。</p>
+        <div class="matrix">
+          <article class="matrix-card ai-card">
+            <h3>AI 提效</h3>
+            <div class="tag-cloud">
+              <span>卖点提炼</span><span>资料整理</span><span>关键词</span><span>脚本生成</span><span>Prompt</span><span>达人匹配</span><span>库存提醒</span><span>复盘总结</span>
+            </div>
           </article>
-          <article class="principle human-card">
-            <h3>人负责把控</h3>
-            <p>确认产品、价格、库存、供应商、合规表达、成片质量、达人合作和最终投放判断。</p>
+          <article class="matrix-card human-card">
+            <h3>人工把控</h3>
+            <div class="tag-cloud">
+              <span>价格确认</span><span>库存确认</span><span>供应商</span><span>合规审核</span><span>成片确认</span><span>达人合作</span><span>补货判断</span><span>最终决策</span>
+            </div>
           </article>
-          <article class="principle data-card">
-            <h3>系统负责沉淀</h3>
-            <p>把每次产品、生成、审核、寄样、发布、反馈都记录下来，形成下一轮优化依据。</p>
+          <article class="matrix-card data-card">
+            <h3>数据沉淀</h3>
+            <div class="tag-cloud">
+              <span>产品库</span><span>供应商库</span><span>库存库</span><span>寄样记录</span><span>Listing 库</span><span>脚本库</span><span>达人库</span><span>效果库</span>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section" id="nodes">
-        <div class="section-title wide">
-          <p class="eyebrow">Node details</p>
-          <h2>核心节点拆解</h2>
-          <p>以下为初步理解，请各部门负责人重点标注：节点是否准确、负责人是否正确、输入输出是否遗漏。</p>
+        <div class="section-heading compact">
+          <p class="eyebrow">Node cards</p>
+          <h2>核心节点细节</h2>
+          <p>默认看摘要；现场讲到某个环节时再展开细节，避免一上来被文字淹没。</p>
         </div>
 
-        <div class="node-grid">
-          <article class="node-card">
-            <header><span>01</span><h3>产品资料 / 选品</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>老板、产品 / 选品、运营</dd>
-              <dt>输入资料</dt><dd>供应商资料、产品图、价格、规格、目标市场</dd>
-              <dt>AI 可辅助</dt><dd>卖点提炼、标签生成、场景归类、内容方向建议</dd>
-              <dt>人工把控</dt><dd>核心卖点、价格、合规限制、主推产品判断</dd>
-              <dt>沉淀数据</dt><dd>产品库、素材库、卖点库、合规限制库</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>02</span><h3>采购 / 供应链</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>采购、供应链、老板</dd>
-              <dt>输入资料</dt><dd>供应商、成本、交期、起订量、补货周期</dd>
-              <dt>AI 可辅助</dt><dd>供应商信息整理、价格记录、交期提醒</dd>
-              <dt>人工把控</dt><dd>供应商选择、采购价格、交期风险、补货决策</dd>
-              <dt>沉淀数据</dt><dd>供应商库、采购记录、成本记录、补货规则</dd>
-            </dl>
-          </article>
-
-          <article class="node-card important">
-            <header><span>03</span><h3>仓储管理</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>仓库、运营、BD、采购</dd>
-              <dt>输入资料</dt><dd>入库单、库存数、样品申请、出库记录、物流单号</dd>
-              <dt>AI 可辅助</dt><dd>库存预警、寄样记录整理、异常提醒、样品状态汇总</dd>
-              <dt>人工把控</dt><dd>实际库存、出入库、错发漏发、退货异常、样品发放</dd>
-              <dt>沉淀数据</dt><dd>库存库、寄样记录、出入库记录、异常记录</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>04</span><h3>Listing 上架</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>平台运营、Listing 负责人、审核人</dd>
-              <dt>输入资料</dt><dd>产品资料、关键词、竞品链接、图片、平台规则</dd>
-              <dt>AI 可辅助</dt><dd>标题、五点描述、关键词、多语言初稿、违规词检查</dd>
-              <dt>人工把控</dt><dd>最终文案、平台合规、关键词准确性、上架确认</dd>
-              <dt>沉淀数据</dt><dd>Listing 文案库、关键词库、审核记录</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>05</span><h3>内容脚本 / Prompt</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>内容负责人、运营、编导</dd>
-              <dt>输入资料</dt><dd>产品卖点、爆款视频、竞品内容、历史脚本</dd>
-              <dt>AI 可辅助</dt><dd>脚本、分镜、字幕、Prompt、不同版本改写</dd>
-              <dt>人工把控</dt><dd>脚本方向、产品表达、场景真实性、合规风险</dd>
-              <dt>沉淀数据</dt><dd>脚本库、Prompt 库、爆款模板库</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>06</span><h3>视频制作</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>剪辑、AI 视频执行、内容审核</dd>
-              <dt>输入资料</dt><dd>脚本、Prompt、产品素材、BGM、字幕</dd>
-              <dt>AI 可辅助</dt><dd>视频生成、配音字幕、Prompt 优化、初步质检</dd>
-              <dt>人工把控</dt><dd>成片质量、产品呈现、画面错误、是否可发布</dd>
-              <dt>沉淀数据</dt><dd>成片库、失败原因、可复用素材库</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>07</span><h3>审核确认</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>老板、主管、运营负责人</dd>
-              <dt>输入资料</dt><dd>Listing、脚本、成片、达人话术、发布素材</dd>
-              <dt>AI 可辅助</dt><dd>敏感词检查、信息一致性检查、风险提醒</dd>
-              <dt>人工把控</dt><dd>最终通过、打回原因、修改意见、发布风险</dd>
-              <dt>沉淀数据</dt><dd>审核记录、打回原因、修改历史</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>08</span><h3>BD / 达人分发</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>BD、达人运营、仓库</dd>
-              <dt>输入资料</dt><dd>达人信息、产品资料、可用素材、样品库存</dd>
-              <dt>AI 可辅助</dt><dd>达人匹配、邀约话术、跟进提醒、合作记录摘要</dd>
-              <dt>人工把控</dt><dd>达人选择、报价谈判、寄样确认、合作判断</dd>
-              <dt>沉淀数据</dt><dd>达人库、寄样记录、合作状态、发布链接</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>09</span><h3>发布 / 销售转化</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>平台运营、BD、数据负责人</dd>
-              <dt>输入资料</dt><dd>已审核内容、达人发布链接、平台商品链接</dd>
-              <dt>AI 可辅助</dt><dd>发布记录整理、数据归因、异常提醒</dd>
-              <dt>人工把控</dt><dd>发布节奏、平台操作、异常处理、投入判断</dd>
-              <dt>沉淀数据</dt><dd>发布记录、销售数据、达人效果数据</dd>
-            </dl>
-          </article>
-
-          <article class="node-card">
-            <header><span>10</span><h3>数据复盘</h3></header>
-            <dl>
-              <dt>主要参与人</dt><dd>老板、运营负责人、数据负责人</dd>
-              <dt>输入资料</dt><dd>播放、互动、订单、库存、达人反馈、审核记录</dd>
-              <dt>AI 可辅助</dt><dd>高表现共性总结、模板效果分析、下一轮建议</dd>
-              <dt>人工把控</dt><dd>继续投入、停止测试、补货、换内容方向</dd>
-              <dt>沉淀数据</dt><dd>复盘结论库、策略调整记录、下一轮任务</dd>
-            </dl>
-          </article>
-        </div>
-      </section>
-
-      <section class="section summary">
-        <div class="summary-column">
-          <p class="eyebrow">AI scope</p>
-          <h2>AI 可介入方向</h2>
-          <ul>
-            <li>资料标准化、产品卖点提炼、标签生成</li>
-            <li>竞品 / 爆款拆解、脚本模板沉淀</li>
-            <li>Listing 初稿、多语言、关键词辅助</li>
-            <li>视频脚本、分镜、字幕、Prompt 批量生成</li>
-            <li>达人匹配、邀约话术、跟进提醒</li>
-            <li>库存预警、寄样记录、异常提醒</li>
-            <li>数据复盘、表现总结、下一轮建议</li>
-          </ul>
-        </div>
-        <div class="summary-column">
-          <p class="eyebrow human-text">Human control</p>
-          <h2>人工必须把控</h2>
-          <ul>
-            <li>产品卖点、价格、库存和合规限制</li>
-            <li>供应商选择、采购价格、交期判断</li>
-            <li>实际库存、发货、寄样和异常处理</li>
-            <li>Listing 最终审核和平台上架确认</li>
-            <li>视频成片质量和是否可发布</li>
-            <li>达人合作、报价、寄样确认</li>
-            <li>是否继续投入、补货或调整方向</li>
-          </ul>
-        </div>
-        <div class="summary-column">
-          <p class="eyebrow data-text">Data assets</p>
-          <h2>数据沉淀结构</h2>
-          <ul>
-            <li>产品库、素材库、供应商库</li>
-            <li>库存库、出入库记录、寄样记录</li>
-            <li>竞品库、爆款内容库、脚本 / Prompt 库</li>
-            <li>Listing 文案库、关键词库、审核记录库</li>
-            <li>达人库、合作状态库、发布效果库</li>
-            <li>销售反馈库、复盘结论库</li>
-          </ul>
+        <div class="accordion-grid">
+          <details class="node-detail" open>
+            <summary><span>01</span><strong>选品 / 产品资料</strong><em>卖点、素材、目标市场</em></summary>
+            <dl><dt>参与人</dt><dd>老板、产品 / 选品、运营</dd><dt>AI</dt><dd>卖点提炼、标签生成、场景归类</dd><dt>人工</dt><dd>主推产品、价格、合规限制</dd><dt>数据</dt><dd>产品库、素材库、卖点库</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>02</span><strong>采购 / 供应链</strong><em>成本、供应商、交期</em></summary>
+            <dl><dt>参与人</dt><dd>采购、供应链、老板</dd><dt>AI</dt><dd>供应商信息整理、交期提醒</dd><dt>人工</dt><dd>供应商选择、采购价格、补货决策</dd><dt>数据</dt><dd>供应商库、采购记录、成本记录</dd></dl>
+          </details>
+          <details class="node-detail important" open>
+            <summary><span>03</span><strong>仓储管理</strong><em>库存、出库、寄样、异常</em></summary>
+            <dl><dt>参与人</dt><dd>仓库、运营、BD、采购</dd><dt>AI</dt><dd>库存预警、寄样记录整理、异常提醒</dd><dt>人工</dt><dd>实际库存、出入库、错发漏发、样品发放</dd><dt>数据</dt><dd>库存库、寄样记录、出入库记录、异常记录</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>04</span><strong>Listing 上架</strong><em>标题、关键词、多语言</em></summary>
+            <dl><dt>参与人</dt><dd>平台运营、Listing 负责人、审核人</dd><dt>AI</dt><dd>标题、五点描述、多语言初稿、违规词检查</dd><dt>人工</dt><dd>最终文案、平台合规、上架确认</dd><dt>数据</dt><dd>Listing 文案库、关键词库、审核记录</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>05</span><strong>内容脚本 / Prompt</strong><em>脚本、分镜、字幕</em></summary>
+            <dl><dt>参与人</dt><dd>内容负责人、运营、编导</dd><dt>AI</dt><dd>脚本、分镜、字幕、Prompt、多版本改写</dd><dt>人工</dt><dd>脚本方向、产品表达、合规风险</dd><dt>数据</dt><dd>脚本库、Prompt 库、爆款模板库</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>06</span><strong>视频制作</strong><em>生成、剪辑、成片筛选</em></summary>
+            <dl><dt>参与人</dt><dd>剪辑、AI 视频执行、内容审核</dd><dt>AI</dt><dd>视频生成、配音字幕、Prompt 优化、初步质检</dd><dt>人工</dt><dd>成片质量、产品呈现、是否可发布</dd><dt>数据</dt><dd>成片库、失败原因、可复用素材库</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>07</span><strong>审核确认</strong><em>合规、质量、发布风险</em></summary>
+            <dl><dt>参与人</dt><dd>老板、主管、运营负责人</dd><dt>AI</dt><dd>敏感词检查、信息一致性检查、风险提醒</dd><dt>人工</dt><dd>最终通过、打回原因、发布风险</dd><dt>数据</dt><dd>审核记录、打回原因、修改历史</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>08</span><strong>BD / 达人分发</strong><em>匹配、邀约、寄样</em></summary>
+            <dl><dt>参与人</dt><dd>BD、达人运营、仓库</dd><dt>AI</dt><dd>达人匹配、邀约话术、跟进提醒</dd><dt>人工</dt><dd>达人选择、报价谈判、寄样确认</dd><dt>数据</dt><dd>达人库、寄样记录、合作状态</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>09</span><strong>发布 / 销售转化</strong><em>发布、销售、转化跟踪</em></summary>
+            <dl><dt>参与人</dt><dd>平台运营、BD、数据负责人</dd><dt>AI</dt><dd>发布记录整理、数据归因、异常提醒</dd><dt>人工</dt><dd>发布节奏、异常处理、投入判断</dd><dt>数据</dt><dd>发布记录、销售数据、达人效果</dd></dl>
+          </details>
+          <details class="node-detail">
+            <summary><span>10</span><strong>数据复盘</strong><em>复盘、反哺、下一轮</em></summary>
+            <dl><dt>参与人</dt><dd>老板、运营负责人、数据负责人</dd><dt>AI</dt><dd>高表现共性总结、模板效果分析</dd><dt>人工</dt><dd>继续投入、停止测试、补货、换方向</dd><dt>数据</dt><dd>复盘结论库、策略调整记录</dd></dl>
+          </details>
         </div>
       </section>
 
       <section class="section" id="alignment">
-        <div class="section-title wide">
-          <p class="eyebrow">Next meeting</p>
-          <h2>下一步对齐会议准备清单</h2>
-          <p>建议老板先组织各部门负责人开短会，请大家提前按各自模块准备资料和真实案例。后续现场访谈会围绕这些问题逐项确认，而不是从零描述流程。</p>
+        <div class="section-heading compact">
+          <p class="eyebrow">Alignment</p>
+          <h2>对齐会议准备清单</h2>
+          <p>默认只看“需准备材料”；展开后再看具体问题。这样老板转发给负责人时，压力更小。</p>
         </div>
-        <div class="checklist">
-          <article>
-            <h3>老板 / 管理层</h3>
-            <ol>
-              <li>当前最影响效率、成本或转化的业务环节分别是什么。</li>
-              <li>哪些业务结果必须老板或主管最终确认。</li>
-              <li>哪些错误是绝对不能发生的，例如价格、库存、合规、达人合作、平台违规。</li>
-              <li>第一阶段更希望优先优化 Listing、内容生产、BD 分发、仓储寄样，还是全链路轻量打通。</li>
-              <li>如果项目有效，应该用哪些指标判断：产出数量、返工次数、人工耗时、发布效果、数据可追溯性。</li>
-              <li>现阶段有哪些系统、表格或工具是必须保留并对接的。</li>
-            </ol>
-          </article>
-          <article>
-            <h3>产品 / 采购</h3>
-            <ol>
-              <li>新品从发现、确认、采购到交给运营，中间经过哪些步骤。</li>
-              <li>产品资料现在包含哪些字段，哪些字段是后续 Listing 和视频必须使用的。</li>
-              <li>产品图片、视频、说明书、规格、价格、库存、卖点分别由谁维护。</li>
-              <li>供应商、采购成本、交期、补货周期现在如何记录。</li>
-              <li>哪些产品信息经常缺失，导致运营、内容、BD 或仓储反复沟通。</li>
-              <li>哪些产品有合规限制、禁用词、特殊国家或平台限制。</li>
-            </ol>
-          </article>
-          <article>
-            <h3>仓储负责人</h3>
-            <ol>
-              <li>产品入库、出库、库存变动现在由谁记录，记录在哪里。</li>
-              <li>库存数据多久更新一次，运营和 BD 如何知道当前可用库存。</li>
-              <li>达人寄样申请由谁发起，仓库如何确认是否可寄。</li>
-              <li>样品出库、物流单号、签收状态现在如何跟踪。</li>
-              <li>缺货、错发、延迟、退货等异常现在如何通知相关人员。</li>
-              <li>哪些仓储数据需要同步给产品、运营、BD 或老板做决策。</li>
-            </ol>
-          </article>
-          <article>
-            <h3>Listing / 平台运营</h3>
-            <ol>
-              <li>一条 Listing 从拿到产品资料到正式上架，中间经过哪些步骤。</li>
-              <li>标题、五点描述、详情页、关键词、多语言内容分别如何生成。</li>
-              <li>写 Listing 前必须拿到哪些产品、素材、关键词和竞品资料。</li>
-              <li>哪些平台规则、禁用词或合规要求最容易导致打回。</li>
-              <li>Listing 由谁初审、谁终审，审核意见如何反馈。</li>
-              <li>历史 Listing、关键词、审核失败原因是否有沉淀和复用。</li>
-            </ol>
-          </article>
-          <article>
-            <h3>内容 / 视频团队</h3>
-            <ol>
-              <li>视频选题从哪里来，爆款参考视频由谁收集和筛选。</li>
-              <li>脚本、分镜、字幕、CTA、AI 视频 Prompt 现在分别由谁负责。</li>
-              <li>一条视频从选题到成片，完整流转步骤是什么。</li>
-              <li>制作视频前必须拿到哪些产品资料和素材。</li>
-              <li>脚本或成片最常见的返工原因是什么。</li>
-              <li>哪些内容必须由老板、主管或运营确认后才能发布。</li>
-              <li>表现好的脚本、Prompt、成片是否会沉淀为模板。</li>
-            </ol>
-          </article>
-          <article>
-            <h3>BD / 达人运营</h3>
-            <ol>
-              <li>达人从寻找、筛选、邀约、报价、寄样到发布，完整步骤是什么。</li>
-              <li>达人信息表现在记录哪些字段，例如国家、类目、粉丝、报价、联系方式、历史效果。</li>
-              <li>如何判断某个达人适合某个产品。</li>
-              <li>邀约话术、跟进话术、寄样通知是否有模板。</li>
-              <li>BD 如何向仓库发起寄样，如何跟踪物流和达人签收。</li>
-              <li>达人发布链接、播放互动、转化结果是否能对应到产品和样品。</li>
-            </ol>
-          </article>
-          <article>
-            <h3>数据 / 复盘</h3>
-            <ol>
-              <li>发布后目前收集哪些数据：播放、互动、点击、订单、达人反馈、平台审核结果。</li>
-              <li>数据是否能对应到具体产品、视频、达人、Listing 和库存。</li>
-              <li>多久复盘一次，复盘由谁组织，结论记录在哪里。</li>
-              <li>表现好的内容、达人、产品是否会被标记原因。</li>
-              <li>表现差的内容是否会记录失败原因，例如素材、脚本、达人、库存、平台规则。</li>
-              <li>复盘结论如何进入下一轮选品、Listing、内容和 BD 分发。</li>
-            </ol>
-          </article>
+
+        <div class="department-grid">
+          <details class="dept-card" open>
+            <summary><strong>老板 / 管理层</strong><span>优先级、风险、验收</span></summary>
+            <div class="prep-tags"><b>关键风险</b><b>优先链路</b><b>验收指标</b></div>
+            <ol><li>当前最影响效率、成本或转化的业务环节分别是什么。</li><li>哪些业务结果必须老板或主管最终确认。</li><li>哪些错误绝对不能发生，例如价格、库存、合规、达人合作、平台违规。</li><li>第一阶段更希望优先优化哪条链路。</li><li>项目有效应看哪些指标。</li><li>哪些系统、表格或工具必须保留并对接。</li></ol>
+          </details>
+          <details class="dept-card">
+            <summary><strong>产品 / 采购</strong><span>资料、供应商、交期</span></summary>
+            <div class="prep-tags"><b>产品资料</b><b>供应商</b><b>缺失字段</b></div>
+            <ol><li>新品从发现、确认、采购到交给运营，中间经过哪些步骤。</li><li>产品资料包含哪些字段，哪些字段后续必须使用。</li><li>产品图片、视频、说明书、规格、价格、库存、卖点分别由谁维护。</li><li>供应商、采购成本、交期、补货周期如何记录。</li><li>哪些产品信息经常缺失。</li><li>哪些产品有合规限制、禁用词、特殊国家或平台限制。</li></ol>
+          </details>
+          <details class="dept-card important">
+            <summary><strong>仓储负责人</strong><span>库存、寄样、异常</span></summary>
+            <div class="prep-tags"><b>库存表</b><b>寄样记录</b><b>异常记录</b></div>
+            <ol><li>产品入库、出库、库存变动由谁记录，记录在哪里。</li><li>库存数据多久更新一次，运营和 BD 如何知道可用库存。</li><li>达人寄样申请由谁发起，仓库如何确认是否可寄。</li><li>样品出库、物流单号、签收状态如何跟踪。</li><li>缺货、错发、延迟、退货等异常如何通知相关人员。</li><li>哪些仓储数据需要同步给产品、运营、BD 或老板。</li></ol>
+          </details>
+          <details class="dept-card">
+            <summary><strong>Listing / 平台运营</strong><span>上架、关键词、审核</span></summary>
+            <div class="prep-tags"><b>上架步骤</b><b>关键词</b><b>打回原因</b></div>
+            <ol><li>一条 Listing 从产品资料到上架，中间经过哪些步骤。</li><li>标题、五点描述、详情页、关键词、多语言内容如何生成。</li><li>写 Listing 前必须拿到哪些资料。</li><li>哪些平台规则或禁用词最容易导致打回。</li><li>Listing 由谁初审、谁终审。</li><li>历史 Listing、关键词、审核失败原因是否沉淀。</li></ol>
+          </details>
+          <details class="dept-card">
+            <summary><strong>内容 / 视频团队</strong><span>选题、脚本、成片</span></summary>
+            <div class="prep-tags"><b>爆款样本</b><b>脚本模板</b><b>返工原因</b></div>
+            <ol><li>视频选题从哪里来，爆款参考由谁收集和筛选。</li><li>脚本、分镜、字幕、CTA、AI Prompt 分别由谁负责。</li><li>一条视频从选题到成片，完整流转步骤是什么。</li><li>制作前必须拿到哪些产品资料和素材。</li><li>脚本或成片最常见返工原因是什么。</li><li>哪些内容必须确认后才能发布。</li><li>表现好的脚本、Prompt、成片是否沉淀为模板。</li></ol>
+          </details>
+          <details class="dept-card">
+            <summary><strong>BD / 达人运营</strong><span>达人、寄样、发布</span></summary>
+            <div class="prep-tags"><b>达人表</b><b>邀约话术</b><b>发布链接</b></div>
+            <ol><li>达人从寻找、筛选、邀约、报价、寄样到发布的完整步骤。</li><li>达人信息表记录哪些字段。</li><li>如何判断达人适合某个产品。</li><li>邀约、跟进、寄样通知是否有模板。</li><li>BD 如何向仓库发起寄样并跟踪物流。</li><li>达人发布和转化结果是否能对应到产品和样品。</li></ol>
+          </details>
+          <details class="dept-card">
+            <summary><strong>数据 / 复盘</strong><span>归因、结论、反哺</span></summary>
+            <div class="prep-tags"><b>数据字段</b><b>复盘表</b><b>结论记录</b></div>
+            <ol><li>发布后收集哪些数据。</li><li>数据能否对应到具体产品、视频、达人、Listing 和库存。</li><li>多久复盘一次，谁组织，结论记录在哪里。</li><li>表现好的内容、达人、产品是否标记原因。</li><li>表现差的内容是否记录失败原因。</li><li>复盘结论如何进入下一轮选品、Listing、内容和 BD。</li></ol>
+          </details>
         </div>
       </section>
     </main>
