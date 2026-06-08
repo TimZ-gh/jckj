@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鎏金岁月 AI 品牌增长中台提案</title>
+  <style>
+    :root {
+      --bg: #05070b;
+      --panel: rgba(13, 18, 28, .76);
+      --panel-strong: rgba(18, 25, 38, .9);
+      --line: rgba(197, 168, 99, .28);
+      --gold: #e9c774;
+      --gold-2: #b98f3f;
+      --cyan: #6ed8ff;
+      --red: #e05d50;
+      --text: #f4efe4;
+      --muted: #aeb7c2;
+      --dark-muted: #6f7b8c;
+      --radius: 8px;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .46);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+      background:
+        radial-gradient(circle at 74% 8%, rgba(110, 216, 255, .18), transparent 30rem),
+        radial-gradient(circle at 19% 34%, rgba(233, 199, 116, .16), transparent 28rem),
+        radial-gradient(circle at 82% 68%, rgba(224, 93, 80, .1), transparent 22rem),
+        linear-gradient(180deg, #05070b 0%, #09101a 44%, #05070b 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      z-index: 2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 82%);
+    }
+
+    canvas#field {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .75;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 3;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px clamp(18px, 4vw, 64px);
+      background: linear-gradient(180deg, rgba(5, 7, 11, .84), rgba(5, 7, 11, .24));
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(233, 199, 116, .72);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 32%, #fff4c7 0 8%, transparent 9%),
+        conic-gradient(from 210deg, rgba(233,199,116,.1), rgba(233,199,116,.86), rgba(110,216,255,.38), rgba(233,199,116,.1));
+      box-shadow: 0 0 28px rgba(233, 199, 116, .28);
+      flex: 0 0 auto;
+    }
+
+    .brand-lockup strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .brand-lockup span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 9px 11px;
+      color: #cdd4de;
+      font-size: 13px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(233, 199, 116, .3);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    section {
+      padding: 92px clamp(18px, 5vw, 84px);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
+      align-items: center;
+      gap: clamp(30px, 5vw, 72px);
+      padding-top: 118px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,7,11,.94) 0%, rgba(5,7,11,.72) 46%, rgba(5,7,11,.2) 100%),
+        url("assets/hero-ai-jewelry.png") center right / cover no-repeat;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: clamp(18px, 5vw, 84px);
+      right: clamp(18px, 5vw, 84px);
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(233, 199, 116, .8), rgba(110, 216, 255, .4), transparent);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 8px 12px;
+      border: 1px solid rgba(233, 199, 116, .3);
+      background: rgba(233, 199, 116, .08);
+      border-radius: 999px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 18px var(--cyan);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(.8); opacity: .6; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      max-width: 880px;
+      margin-top: 28px;
+      font-size: clamp(42px, 7vw, 92px);
+      line-height: .98;
+      font-weight: 760;
+    }
+
+    .gold-text {
+      color: transparent;
+      background: linear-gradient(92deg, #fff2bd, #e6bf62 38%, #8fe2ff 78%, #fff2bd);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-lede {
+      max-width: 720px;
+      margin-top: 28px;
+      color: #d8dee6;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.72;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 650;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: 0 12px 28px rgba(0,0,0,.25);
+    }
+
+    .btn.primary {
+      color: #081018;
+      background: linear-gradient(135deg, #fff0b5, #d8aa45);
+      border-color: rgba(255, 242, 189, .8);
+    }
+
+    .signal-panel {
+      align-self: end;
+      justify-self: end;
+      width: min(100%, 470px);
+      margin-bottom: 28px;
+      padding: 18px;
+      background: rgba(8, 12, 19, .66);
+      border: 1px solid rgba(233, 199, 116, .22);
+      border-radius: var(--radius);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 112px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.09);
+    }
+
+    .metric b {
+      display: block;
+      color: var(--gold);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--cyan);
+      font-size: 13px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4.6vw, 58px);
+      line-height: 1.12;
+      font-weight: 730;
+    }
+
+    .section-head p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(18,25,38,.78), rgba(9,13,20,.72));
+      box-shadow: 0 18px 44px rgba(0,0,0,.25);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--cyan), transparent);
+      opacity: .8;
+    }
+
+    .card-number {
+      color: rgba(233, 199, 116, .76);
+      font-size: 13px;
+      margin-bottom: 32px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.28;
+    }
+
+    .card p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .core {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at 50% 44%, rgba(233,199,116,.28), transparent 12rem),
+        linear-gradient(180deg, rgba(14,22,36,.88), rgba(8,11,18,.9));
+    }
+
+    .orb {
+      width: min(260px, 70vw);
+      aspect-ratio: 1;
+      margin: 20px auto 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(233, 199, 116, .38);
+      background:
+        radial-gradient(circle at 40% 34%, rgba(255,255,255,.86), transparent 9%),
+        radial-gradient(circle at 58% 60%, rgba(110,216,255,.36), transparent 22%),
+        conic-gradient(from 20deg, rgba(233,199,116,.18), rgba(233,199,116,.8), rgba(224,93,80,.48), rgba(110,216,255,.42), rgba(233,199,116,.18));
+      box-shadow: 0 0 72px rgba(233, 199, 116, .22), inset 0 0 40px rgba(0,0,0,.28);
+      animation: rotateGlow 14s linear infinite;
+    }
+
+    @keyframes rotateGlow {
+      to { transform: rotate(360deg); }
+    }
+
+    .core h3 {
+      font-size: clamp(24px, 3vw, 36px);
+      text-align: center;
+    }
+
+    .core p {
+      text-align: center;
+      color: #d7dde4;
+      line-height: 1.8;
+      margin-top: 14px;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .module {
+      padding: 22px;
+      min-height: 196px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(11, 17, 28, .82);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .module:hover {
+      transform: translateY(-4px);
+      border-color: rgba(233,199,116,.46);
+      background: rgba(15, 23, 38, .92);
+    }
+
+    .module small {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .module h3 {
+      margin-top: 12px;
+      font-size: 21px;
+    }
+
+    .module p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .wide-module {
+      grid-column: 1 / -1;
+      min-height: 150px;
+      display: grid;
+      grid-template-columns: .72fr 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 8px 10px;
+      border: 1px solid rgba(110,216,255,.22);
+      background: rgba(110,216,255,.08);
+      color: #dff6ff;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .capability-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .cap {
+      padding: 18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .cap b {
+      display: block;
+      color: #fff7d7;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .cap span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .step {
+      position: relative;
+      min-height: 176px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: rgba(12, 18, 30, .82);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .step::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 10px;
+      height: 1px;
+      background: rgba(233,199,116,.55);
+    }
+
+    .step:last-child::after { display: none; }
+
+    .step em {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      font-style: normal;
+      color: #081018;
+      background: linear-gradient(135deg, #fff0b5, #d5a642);
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    .step h3 {
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    .step p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .phase {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .phase strong {
+      color: var(--gold);
+      font-size: 15px;
+    }
+
+    .phase h3 {
+      font-size: 20px;
+    }
+
+    .phase p {
+      margin-top: 9px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .matrix-item {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(14,22,36,.72), rgba(10,14,22,.72));
+    }
+
+    .matrix-item b {
+      display: block;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+
+    .matrix-item span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.62;
+    }
+
+    .quote-band {
+      margin: 32px clamp(18px, 5vw, 84px) 0;
+      padding: clamp(28px, 5vw, 54px);
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,199,116,.28);
+      background:
+        linear-gradient(120deg, rgba(233,199,116,.16), rgba(110,216,255,.08)),
+        rgba(9, 14, 22, .86);
+      box-shadow: var(--shadow);
+    }
+
+    .quote-band p {
+      max-width: 1050px;
+      color: #fff8dc;
+      font-size: clamp(22px, 3vw, 38px);
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .quote-band span {
+      display: block;
+      margin-top: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .closing {
+      padding-bottom: 70px;
+    }
+
+    .closing-panel {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: 1fr .75fr;
+      gap: 28px;
+      align-items: end;
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, rgba(5,7,11,.9), rgba(5,7,11,.38)),
+        url("assets/hero-ai-jewelry.png") center right / cover no-repeat;
+      border: 1px solid rgba(233,199,116,.24);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .closing h2 {
+      max-width: 850px;
+    }
+
+    .closing p {
+      max-width: 760px;
+      margin-top: 22px;
+      color: #dce3eb;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .mini-dashboard {
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(7, 10, 16, .74);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(16px);
+    }
+
+    .bar {
+      margin: 15px 0;
+    }
+
+    .bar label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .bar i {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      overflow: hidden;
+    }
+
+    .bar i::before {
+      content: "";
+      display: block;
+      width: var(--w);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--gold), var(--cyan));
+      box-shadow: 0 0 16px rgba(110,216,255,.34);
+    }
+
+    footer {
+      padding: 28px clamp(18px, 5vw, 84px) 42px;
+      color: var(--dark-muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .architecture,
+      .deliverables,
+      .closing-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .signal-panel {
+        justify-self: stretch;
+      }
+
+      .capability-strip,
+      .workflow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .step::after { display: none; }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        position: absolute;
+      }
+
+      .nav-links { display: none; }
+
+      section {
+        padding: 70px 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 110px;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(5,7,11,.96) 0%, rgba(5,7,11,.78) 58%, rgba(5,7,11,.98) 100%),
+          url("assets/hero-ai-jewelry.png") center / cover no-repeat;
+      }
+
+      .problem-grid,
+      .module-grid,
+      .wide-module,
+      .capability-strip,
+      .workflow,
+      .matrix,
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phase {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="shell">
+    <nav class="nav">
+      <a class="brand-lockup" href="#top" aria-label="返回顶部">
+        <span class="mark" aria-hidden="true"></span>
+        <span>
+          <strong>鎏金岁月 AI Growth</strong>
+          <span>Brand Intelligence Proposal</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="页面导航">
+        <a href="#why">战略升级</a>
+        <a href="#system">系统架构</a>
+        <a href="#workflow">工作流</a>
+        <a href="#delivery">交付路径</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse"></span> AI-powered premium brand culture system</div>
+          <h1>鎏金岁月 <span class="gold-text">AI 品牌增长中台</span></h1>
+          <p class="hero-lede">
+            基于“东方悦己能量”品牌战略，为鎏金岁月构建一套可调用、可生成、可运营、可复盘的智能协同系统，让品牌文化从提案资产升级为持续增长基础设施。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#system">查看系统架构</a>
+            <a class="btn" href="#delivery">查看交付路径</a>
+          </div>
+        </div>
+        <aside class="signal-panel reveal" aria-label="核心指标">
+          <div class="signal-grid">
+            <div class="metric"><b>5</b><span>AI 能力模块覆盖品牌、内容、趋势、私域与复盘</span></div>
+            <div class="metric"><b>3</b><span>珍珠、珊瑚、黄金材质文化转为可调用资产</span></div>
+            <div class="metric"><b>∞</b><span>从一次性提案升级为持续学习的品牌运营系统</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="why">
+        <div class="section-head reveal">
+          <div class="section-kicker">01 Strategic Upgrade</div>
+          <h2>原有品牌文化方案已经完成定位，AI 负责让它进入日常增长。</h2>
+          <p>
+            全案策略解决“品牌应该成为什么”，AI 系统解决“如何长期稳定地表达、生产、销售和优化”。两者叠加，才能让文化溢价不止停留在一次提案中。
+          </p>
+        </div>
+        <div class="problem-grid">
+          <article class="card reveal">
+            <div class="card-number">Pain 01</div>
+            <h3>文化资产难以持续调用</h3>
+            <p>“东方悦己能量”、材质故事、用户画像和渠道策略如果只存在于 PDF 中，日常内容和销售很容易回到产品参数与价格表达。</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-number">Pain 02</div>
+            <h3>多平台内容生产消耗重</h3>
+            <p>视频号、公众号、朋友圈、抖音、小红书需要不同语气和格式，人工生产容易慢、散、重复，且难以保持统一高级感。</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-number">Pain 03</div>
+            <h3>传播反馈缺少增长闭环</h3>
+            <p>内容发布、客户咨询、销售线索、竞品趋势如果无法回流到策略系统，品牌运营就难以持续学习和进化。</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="quote-band reveal">
+        <p>AI 不是替代品牌策划，而是把品牌战略转化为每天可执行、可复制、可优化的增长系统。</p>
+        <span>系统坚持“AI 辅助，人来决策”：AI 提升效率、沉淀资产、发现机会；品牌方与服务团队负责战略判断、审美把控和最终确认。</span>
+      </div>
+
+      <section id="system">
+        <div class="section-head reveal">
+          <div class="section-kicker">02 System Architecture</div>
+          <h2>一个品牌大脑，五大 AI 能力系统。</h2>
+          <p>
+            以原有文化整合方案为底座，将品牌定位、产品文化、用户需求、渠道内容和运营数据统一接入 AI 品牌大脑，形成面向增长的智能中台。
+          </p>
+        </div>
+
+        <div class="architecture">
+          <article class="card core reveal">
+            <div>
+              <div class="orb" aria-hidden="true"></div>
+              <h3>AI 品牌大脑</h3>
+              <p>沉淀“东方悦己能量”战略资产，统一品牌语气、内容标准、销售表达和复盘逻辑。</p>
+            </div>
+            <div class="pill-row" aria-label="品牌知识标签">
+              <span class="pill">东方悦己能量</span>
+              <span class="pill">水蕴珍珠</span>
+              <span class="pill">火树珊瑚</span>
+              <span class="pill">金石黄金</span>
+              <span class="pill">高净值渠道</span>
+            </div>
+          </article>
+
+          <div class="module-grid">
+            <article class="module reveal">
+              <small>Module 01</small>
+              <h3>AI 品牌文化资产库</h3>
+              <p>结构化沉淀品牌定位、材质文化、产品线表达、用户画像、竞品案例和品牌禁用表达。</p>
+            </article>
+            <article class="module reveal">
+              <small>Module 02</small>
+              <h3>AI 内容创意生产系统</h3>
+              <p>生成选题、标题、长文、短视频脚本、分镜、朋友圈文案、小红书笔记和视觉方向。</p>
+            </article>
+            <article class="module reveal">
+              <small>Module 03</small>
+              <h3>AI 竞品与趋势洞察系统</h3>
+              <p>持续追踪珠宝新品、东方美学案例、爆款内容、高净值渠道和用户评论中的购买动机。</p>
+            </article>
+            <article class="module reveal">
+              <small>Module 04</small>
+              <h3>AI 私域销售赋能系统</h3>
+              <p>为导购、客服和运营生成单品讲解卡、客群推荐话术、客户跟进文案和场景销售话术。</p>
+            </article>
+            <article class="module wide-module reveal">
+              <div>
+                <small>Module 05</small>
+                <h3>AI 数据复盘与增长优化系统</h3>
+              </div>
+              <p>回收平台表现、客户反馈和销售线索，输出周/月度复盘、爆款原因分析、低效内容优化和下一轮选题建议。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="capability-strip">
+          <div class="cap reveal"><b>统一表达</b><span>让每个平台、每位销售都围绕同一套品牌文化说话。</span></div>
+          <div class="cap reveal"><b>提升产能</b><span>把选题、脚本、文案和分镜从人工起稿变为 AI 初稿。</span></div>
+          <div class="cap reveal"><b>持续洞察</b><span>让竞品、趋势和用户反馈成为可更新的策略输入。</span></div>
+          <div class="cap reveal"><b>销售转译</b><span>把文化溢价转化为客户听得懂、愿意买的销售语言。</span></div>
+          <div class="cap reveal"><b>增长复盘</b><span>形成生产、发布、反馈、优化的循环运营机制。</span></div>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <div class="section-head reveal">
+          <div class="section-kicker">03 Operating Flow</div>
+          <h2>从品牌战略到内容增长闭环。</h2>
+          <p>
+            这不是一个单点生成工具，而是一套贯穿“策略输入、内容生产、人工审核、多平台发布、数据回流、优化建议”的半自动工作流。
+          </p>
+        </div>
+
+        <div class="workflow">
+          <article class="step reveal">
+            <em>01</em>
+            <h3>战略入库</h3>
+            <p>导入品牌定位、材质文化、用户画像、渠道策略和服务规范。</p>
+          </article>
+          <article class="step reveal">
+            <em>02</em>
+            <h3>选题生成</h3>
+            <p>根据品牌日历、产品重点、平台趋势生成内容选题池。</p>
+          </article>
+          <article class="step reveal">
+            <em>03</em>
+            <h3>内容起稿</h3>
+            <p>生成公众号、小红书、朋友圈、短视频脚本和拍摄分镜。</p>
+          </article>
+          <article class="step reveal">
+            <em>04</em>
+            <h3>人工审核</h3>
+            <p>由策略、审美、事实、合规和商业判断进行最终确认。</p>
+          </article>
+          <article class="step reveal">
+            <em>05</em>
+            <h3>排期发布</h3>
+            <p>进入多平台内容日历，匹配视频号、公众号、抖音、小红书节奏。</p>
+          </article>
+          <article class="step reveal">
+            <em>06</em>
+            <h3>复盘优化</h3>
+            <p>回收数据与反馈，生成报告、优化建议和下一轮增长动作。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="delivery">
+        <div class="section-head reveal">
+          <div class="section-kicker">04 Delivery Roadmap</div>
+          <h2>三阶段落地，从品牌大脑到增长系统。</h2>
+          <p>
+            先完成可演示、可使用的 AI 基础能力，再逐步接入内容工作台、私域销售与数据复盘模块，降低落地风险。
+          </p>
+        </div>
+
+        <div class="deliverables">
+          <div class="timeline">
+            <article class="phase reveal">
+              <strong>2-4 周</strong>
+              <div>
+                <h3>阶段一：品牌 AI 大脑搭建</h3>
+                <p>交付品牌知识库、材质文化库、用户画像库、内容栏目模板、提示词体系和基础生成流程。</p>
+              </div>
+            </article>
+            <article class="phase reveal">
+              <strong>1-2 个月</strong>
+              <div>
+                <h3>阶段二：内容生产工作台</h3>
+                <p>交付多平台内容生成工具、选题池、脚本生成器、图文模板、审核流和排期表。</p>
+              </div>
+            </article>
+            <article class="phase reveal">
+              <strong>3 个月起</strong>
+              <div>
+                <h3>阶段三：运营增长系统</h3>
+                <p>接入竞品趋势监测、内容数据复盘、私域销售话术库、月度增长报告和持续优化机制。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="matrix">
+            <div class="matrix-item reveal"><b>AI 系统规划</b><span>定义系统边界、能力模块、使用场景、角色权限和交付优先级。</span></div>
+            <div class="matrix-item reveal"><b>知识库结构设计</b><span>把全案方案内容拆成可检索、可调用、可更新的品牌资产。</span></div>
+            <div class="matrix-item reveal"><b>提示词与智能体设计</b><span>为内容、销售、洞察、复盘配置不同工作流和生成标准。</span></div>
+            <div class="matrix-item reveal"><b>内容工作流落地</b><span>打通选题、生成、审核、排期和素材管理的半自动流程。</span></div>
+            <div class="matrix-item reveal"><b>数据看板与报告机制</b><span>形成周报、月报、爆款拆解、低效内容诊断和优化建议。</span></div>
+            <div class="matrix-item reveal"><b>培训与陪跑</b><span>帮助品牌团队、销售团队和服务团队掌握系统使用方法。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="closing-panel reveal">
+          <div>
+            <div class="section-kicker">05 Proposal Close</div>
+            <h2>让东方悦己能量，成为可持续增长的智能系统。</h2>
+            <p>
+              鎏金岁月的品牌价值，不只来自珍珠、珊瑚与黄金本身，而来自它们被持续讲述、被用户理解、被销售转译、被数据优化的能力。AI 品牌增长中台，将帮助品牌把这种能力沉淀下来。
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#top">回到首页</a>
+              <a class="btn" href="#system">重看五大模块</a>
+            </div>
+          </div>
+          <aside class="mini-dashboard" aria-label="增长价值示意">
+            <div class="bar">
+              <label><span>品牌表达一致性</span><span>92%</span></label>
+              <i style="--w:92%"></i>
+            </div>
+            <div class="bar">
+              <label><span>内容起稿效率</span><span>86%</span></label>
+              <i style="--w:86%"></i>
+            </div>
+            <div class="bar">
+              <label><span>销售话术标准化</span><span>78%</span></label>
+              <i style="--w:78%"></i>
+            </div>
+            <div class="bar">
+              <label><span>运营复盘闭环</span><span>88%</span></label>
+              <i style="--w:88%"></i>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      鎏金岁月 AI 品牌增长中台提案 | 基于既有品牌文化整合方案延展的 AI 系统增值模块
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("field");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resize() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * ratio);
+      canvas.height = Math.floor(window.innerHeight * ratio);
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const count = Math.max(58, Math.floor(window.innerWidth / 18));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - .5) * .28,
+        vy: (Math.random() - .5) * .28,
+        r: Math.random() * 1.7 + .4,
+        hue: Math.random() > .72 ? "gold" : "cyan"
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
+        if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.hue === "gold" ? "rgba(233,199,116,.62)" : "rgba(110,216,255,.52)";
+        ctx.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const d = Math.hypot(dx, dy);
+          if (d < 118) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(110,216,255,${(1 - d / 118) * .12})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("on");
+      });
+    }, { threshold: .14 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>
