@@ -505,6 +505,203 @@
       line-height: 1.55;
     }
 
+    .roi-board {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .compare-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .mode-card {
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(12, 18, 30, .82);
+      min-height: 360px;
+    }
+
+    .mode-card.ai {
+      border-color: rgba(233,199,116,.34);
+      background:
+        radial-gradient(circle at 80% 12%, rgba(233,199,116,.16), transparent 14rem),
+        rgba(13, 20, 32, .9);
+      box-shadow: 0 22px 70px rgba(233,199,116,.08);
+    }
+
+    .mode-card small {
+      color: var(--dark-muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .mode-card.ai small {
+      color: var(--gold);
+    }
+
+    .mode-card h3 {
+      margin-top: 12px;
+      font-size: 24px;
+    }
+
+    .compare-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .compare-list li {
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .compare-list b {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .gain-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .gain {
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(180deg, rgba(18,25,38,.76), rgba(9,13,20,.72));
+    }
+
+    .gain strong {
+      display: block;
+      color: transparent;
+      background: linear-gradient(92deg, #fff2bd, #e5bd5c, #7bdcff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .gain span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .calculator {
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(110,216,255,.24);
+      background:
+        linear-gradient(135deg, rgba(110,216,255,.1), rgba(233,199,116,.08)),
+        rgba(8, 12, 19, .78);
+      box-shadow: var(--shadow);
+    }
+
+    .calculator h3 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .calculator > p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .calc-field {
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.045);
+    }
+
+    .calc-field label {
+      display: block;
+      color: #d8dee6;
+      font-size: 13px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .calc-field input {
+      width: 100%;
+      height: 38px;
+      padding: 0 10px;
+      color: var(--text);
+      background: rgba(5, 7, 11, .66);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+      font: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .calc-field input:focus {
+      border-color: rgba(233,199,116,.72);
+      box-shadow: 0 0 0 3px rgba(233,199,116,.12);
+    }
+
+    .calc-output {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .output-card {
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(5, 7, 11, .66);
+      border: 1px solid rgba(233,199,116,.22);
+    }
+
+    .output-card b {
+      display: block;
+      color: var(--gold);
+      font-size: clamp(20px, 2.3vw, 30px);
+      line-height: 1.1;
+    }
+
+    .output-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .assumption {
+      margin-top: 14px;
+      color: var(--dark-muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
     .workflow {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -748,7 +945,14 @@
       }
 
       .capability-strip,
+      .roi-board,
       .workflow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .compare-panel,
+      .gain-grid,
+      .calc-output {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -781,6 +985,11 @@
       .module-grid,
       .wide-module,
       .capability-strip,
+      .roi-board,
+      .compare-panel,
+      .gain-grid,
+      .calc-grid,
+      .calc-output,
       .workflow,
       .matrix,
       .signal-grid {
@@ -816,6 +1025,7 @@
       <div class="nav-links" aria-label="页面导航">
         <a href="#why">战略升级</a>
         <a href="#system">系统架构</a>
+        <a href="#roi">价值测算</a>
         <a href="#workflow">工作流</a>
         <a href="#delivery">交付路径</a>
       </div>
@@ -940,9 +1150,92 @@
         </div>
       </section>
 
+      <section id="roi">
+        <div class="section-head reveal">
+          <div class="section-kicker">03 Business Impact</div>
+          <h2>接入 AI 系统，不只是提升效率，而是重构品牌增长的成本结构。</h2>
+          <p>
+            对鎏金岁月而言，AI 系统带来的价值可以拆成两类账：一类是内容、运营、销售协同的降本；另一类是线索转化、复购经营和高净值客户触达带来的增收。
+          </p>
+        </div>
+
+        <div class="roi-board">
+          <div>
+            <div class="compare-panel">
+              <article class="mode-card reveal">
+                <small>Without AI System</small>
+                <h3>传统全人工运营</h3>
+                <ul class="compare-list">
+                  <li><b>效率</b>选题、文案、脚本、分镜反复从零开始，跨平台改写周期长。</li>
+                  <li><b>成本</b>高频内容依赖策划、文案、设计、剪辑密集投入，边际成本高。</li>
+                  <li><b>沉淀</b>品牌文化、销售话术、爆款经验分散在个人经验和文件夹中。</li>
+                  <li><b>发展</b>团队扩张主要靠加人，难以快速复制到新门店、新渠道、新活动。</li>
+                </ul>
+              </article>
+              <article class="mode-card ai reveal">
+                <small>With AI Growth Platform</small>
+                <h3>AI 增长中台运营</h3>
+                <ul class="compare-list">
+                  <li><b>效率</b>AI 先完成 60%-80% 初稿，团队聚焦审美、策略和成交判断。</li>
+                  <li><b>成本</b>固定团队产出更多内容与话术，内容边际生产成本持续下降。</li>
+                  <li><b>沉淀</b>品牌知识、用户画像、素材模板、复盘结论持续进入品牌大脑。</li>
+                  <li><b>发展</b>可复制到机场、酒店、门店、私域和线上平台，形成规模化能力。</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="gain-grid">
+              <div class="gain reveal"><strong>3x</strong><span>月内容产能从单点生产升级为多平台矩阵输出</span></div>
+              <div class="gain reveal"><strong>-45%</strong><span>内容与运营综合成本的保守下降测算</span></div>
+              <div class="gain reveal"><strong>+1.2%</strong><span>线索转化率提升的保守测算基准</span></div>
+              <div class="gain reveal"><strong>24h</strong><span>趋势、竞品、反馈从月度复盘变为日常更新</span></div>
+            </div>
+          </div>
+
+          <aside class="calculator reveal" aria-label="AI ROI 测算器">
+            <h3>AI 投资回报测算</h3>
+            <p>以下为演示测算模型，可在提案现场替换为品牌真实经营数据，快速计算年度降本与增收空间。</p>
+
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label for="monthlyCost">当前月度内容与运营成本（元）</label>
+                <input id="monthlyCost" type="number" value="100000" min="0" step="5000">
+              </div>
+              <div class="calc-field">
+                <label for="savingRate">AI 接入后成本下降比例（%）</label>
+                <input id="savingRate" type="number" value="45" min="0" max="90" step="1">
+              </div>
+              <div class="calc-field">
+                <label for="monthlyLeads">月度有效销售线索（个）</label>
+                <input id="monthlyLeads" type="number" value="300" min="0" step="10">
+              </div>
+              <div class="calc-field">
+                <label for="averageOrder">平均成交客单价（元）</label>
+                <input id="averageOrder" type="number" value="5800" min="0" step="100">
+              </div>
+              <div class="calc-field">
+                <label for="upliftRate">AI 赋能后转化率提升（百分点）</label>
+                <input id="upliftRate" type="number" value="1.2" min="0" max="20" step="0.1">
+              </div>
+              <div class="calc-field">
+                <label for="systemCost">AI 系统年度投入（元）</label>
+                <input id="systemCost" type="number" value="180000" min="0" step="10000">
+              </div>
+            </div>
+
+            <div class="calc-output">
+              <div class="output-card"><b id="costSaving">¥54.0万</b><span>年度可节省成本</span></div>
+              <div class="output-card"><b id="revenueGain">¥25.1万</b><span>年度新增销售额</span></div>
+              <div class="output-card"><b id="netImpact">¥61.1万</b><span>扣除系统投入后的年度净影响</span></div>
+            </div>
+            <div class="assumption">测算逻辑：年度节省成本 = 月运营成本 x 成本下降比例 x 12；年度新增销售额 = 月线索 x 客单价 x 转化率提升 x 12；最终以品牌真实经营数据为准。</div>
+          </aside>
+        </div>
+      </section>
+
       <section id="workflow">
         <div class="section-head reveal">
-          <div class="section-kicker">03 Operating Flow</div>
+          <div class="section-kicker">04 Operating Flow</div>
           <h2>从品牌战略到内容增长闭环。</h2>
           <p>
             这不是一个单点生成工具，而是一套贯穿“策略输入、内容生产、人工审核、多平台发布、数据回流、优化建议”的半自动工作流。
@@ -985,7 +1278,7 @@
 
       <section id="delivery">
         <div class="section-head reveal">
-          <div class="section-kicker">04 Delivery Roadmap</div>
+          <div class="section-kicker">05 Delivery Roadmap</div>
           <h2>三阶段落地，从品牌大脑到增长系统。</h2>
           <p>
             先完成可演示、可使用的 AI 基础能力，再逐步接入内容工作台、私域销售与数据复盘模块，降低落地风险。
@@ -1031,7 +1324,7 @@
       <section class="closing">
         <div class="closing-panel reveal">
           <div>
-            <div class="section-kicker">05 Proposal Close</div>
+            <div class="section-kicker">06 Proposal Close</div>
             <h2>让东方悦己能量，成为可持续增长的智能系统。</h2>
             <p>
               鎏金岁月的品牌价值，不只来自珍珠、珊瑚与黄金本身，而来自它们被持续讲述、被用户理解、被销售转译、被数据优化的能力。AI 品牌增长中台，将帮助品牌把这种能力沉淀下来。
@@ -1128,7 +1421,43 @@
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     window.addEventListener("resize", resize);
+
+    const yuan = new Intl.NumberFormat("zh-CN", {
+      style: "currency",
+      currency: "CNY",
+      maximumFractionDigits: 1,
+      notation: "compact",
+      compactDisplay: "short"
+    });
+
+    function readNumber(id) {
+      const value = Number(document.getElementById(id)?.value || 0);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function updateRoi() {
+      const monthlyCost = readNumber("monthlyCost");
+      const savingRate = readNumber("savingRate") / 100;
+      const monthlyLeads = readNumber("monthlyLeads");
+      const averageOrder = readNumber("averageOrder");
+      const upliftRate = readNumber("upliftRate") / 100;
+      const systemCost = readNumber("systemCost");
+
+      const costSaving = monthlyCost * savingRate * 12;
+      const revenueGain = monthlyLeads * averageOrder * upliftRate * 12;
+      const netImpact = costSaving + revenueGain - systemCost;
+
+      document.getElementById("costSaving").textContent = yuan.format(costSaving);
+      document.getElementById("revenueGain").textContent = yuan.format(revenueGain);
+      document.getElementById("netImpact").textContent = yuan.format(netImpact);
+    }
+
+    ["monthlyCost", "savingRate", "monthlyLeads", "averageOrder", "upliftRate", "systemCost"].forEach(id => {
+      document.getElementById(id)?.addEventListener("input", updateRoi);
+    });
+
     resize();
+    updateRoi();
     draw();
   </script>
 </body>
