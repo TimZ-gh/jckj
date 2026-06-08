@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tim 张｜企业 AI 转型顾问项目介绍</title>
+  <style>
+    :root {
+      --bg: #080a0f;
+      --panel: #111722;
+      --panel-2: #151d2a;
+      --line: rgba(210, 225, 238, 0.16);
+      --text: #eef5f6;
+      --muted: #9eabb4;
+      --green: #2ff3a3;
+      --amber: #ffbf5c;
+      --red: #ff5c72;
+      --cyan: #58d9ff;
+      --ink: #05070b;
+      --white-soft: rgba(255, 255, 255, 0.86);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(0deg, rgba(255,255,255,0.028) 1px, transparent 1px) 0 0 / 72px 72px,
+        radial-gradient(circle at 20% 10%, rgba(47, 243, 163, 0.13), transparent 32%),
+        radial-gradient(circle at 86% 18%, rgba(88, 217, 255, 0.12), transparent 26%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-shell { min-height: 100vh; overflow: hidden; }
+
+    .hero > *,
+    .section-head > *,
+    .diagnosis-grid > *,
+    .pipeline > *,
+    .services > *,
+    .loop-wrap > *,
+    .metrics > *,
+    .industries > * {
+      min-width: 0;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px clamp(18px, 4vw, 56px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 10, 15, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-size: 14px;
+      color: var(--white-soft);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(47, 243, 163, 0.45);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(47, 243, 163, 0.2), rgba(88, 217, 255, 0.08));
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav a:hover { color: var(--green); }
+
+    .section {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 84px 0;
+    }
+
+    .hero {
+      position: relative;
+      width: min(1280px, calc(100% - 36px));
+      min-height: min(820px, calc(100vh - 66px));
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 92px) 0 52px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--green);
+      box-shadow: 0 0 16px rgba(47, 243, 163, 0.9);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: 76px;
+      line-height: 1.03;
+      font-weight: 850;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .accent-text {
+      display: inline-block;
+      color: transparent;
+      background: linear-gradient(90deg, var(--green), #eafdf5 44%, var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .title-line { display: block; }
+
+    .hero-lead {
+      max-width: 640px;
+      margin: 28px 0 0;
+      color: var(--white-soft);
+      font-size: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .btn.primary {
+      border-color: rgba(47, 243, 163, 0.58);
+      background: linear-gradient(135deg, rgba(47, 243, 163, 0.96), rgba(88, 217, 255, 0.78));
+      color: #06120e;
+      box-shadow: 0 14px 44px rgba(47, 243, 163, 0.16);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 580px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #141a20;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 580px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95) contrast(1.04) brightness(0.74);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 10, 15, 0.72), transparent 38%),
+        linear-gradient(0deg, rgba(8, 10, 15, 0.86), transparent 44%);
+      pointer-events: none;
+    }
+
+    .hud {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(5, 7, 11, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .hud-item {
+      min-height: 96px;
+      padding: 16px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hud-item:last-child { border-right: 0; }
+
+    .hud-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hud-value {
+      display: block;
+      margin-top: 8px;
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 820;
+      line-height: 1.2;
+    }
+
+    .hud-value.green { color: var(--green); }
+    .hud-value.amber { color: var(--amber); }
+    .hud-value.cyan { color: var(--cyan); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(260px, 0.55fr);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 46px;
+      line-height: 1.14;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .diagnosis-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .problem {
+      min-height: 220px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025)),
+        var(--panel);
+    }
+
+    .problem .tag {
+      display: inline-flex;
+      margin-bottom: 28px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: var(--red);
+      background: rgba(255, 92, 114, 0.11);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .problem h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .problem p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .method-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(47, 243, 163, 0.11), transparent 34%),
+        rgba(255, 255, 255, 0.025);
+    }
+
+    .method {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 78px 0;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 34px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .pipe-step {
+      position: relative;
+      min-height: 260px;
+      padding: 26px;
+      background: rgba(12, 16, 23, 0.92);
+    }
+
+    .pipe-step::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 24px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .step-no {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .pipe-step h3 {
+      margin: 20px 0 12px;
+      font-size: 23px;
+      line-height: 1.22;
+    }
+
+    .pipe-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service {
+      display: flex;
+      min-height: 360px;
+      flex-direction: column;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-2);
+    }
+
+    .service.featured {
+      border-color: rgba(47, 243, 163, 0.46);
+      background:
+        linear-gradient(180deg, rgba(47, 243, 163, 0.12), rgba(255,255,255,0.035)),
+        var(--panel-2);
+    }
+
+    .service h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.28;
+    }
+
+    .price {
+      margin: 0 0 18px;
+      color: var(--amber);
+      font-size: 26px;
+      font-weight: 850;
+    }
+
+    .service p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service ul {
+      margin: auto 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--white-soft);
+      font-size: 14px;
+    }
+
+    .service li {
+      padding: 9px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .loop-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(360px, 0.5fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .loop {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(96px, 1fr));
+      gap: 8px;
+      align-items: center;
+      overflow-x: auto;
+      padding: 4px 2px 12px;
+    }
+
+    .loop-node {
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.052);
+    }
+
+    .loop-node strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.26;
+    }
+
+    .loop-node span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 120px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.054);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1.05;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .industries {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .industry {
+      min-height: 250px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)),
+        var(--panel);
+    }
+
+    .industry h3 {
+      margin: 0 0 16px;
+      font-size: 22px;
+    }
+
+    .industry p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .chip {
+      padding: 5px 8px;
+      border: 1px solid rgba(88, 217, 255, 0.24);
+      border-radius: 6px;
+      color: var(--cyan);
+      background: rgba(88, 217, 255, 0.08);
+      font-size: 12px;
+    }
+
+    .final {
+      padding-bottom: 104px;
+    }
+
+    .cta {
+      position: relative;
+      padding: clamp(28px, 5vw, 56px);
+      border: 1px solid rgba(47, 243, 163, 0.34);
+      border-radius: 8px;
+      background:
+        linear-gradient(120deg, rgba(47, 243, 163, 0.16), rgba(255, 191, 92, 0.08) 52%, rgba(88, 217, 255, 0.1)),
+        rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+
+    .cta h2 {
+      max-width: 860px;
+      font-size: 56px;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: var(--white-soft);
+      font-size: 18px;
+    }
+
+    .cta .hero-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      h1 { font-size: 58px; }
+      h2 { font-size: 38px; }
+      .cta h2 { font-size: 42px; }
+
+      .hero-visual,
+      .hero-visual img { min-height: 460px; }
+
+      .diagnosis-grid,
+      .services {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pipeline,
+      .industries,
+      .loop-wrap,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        word-break: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .topbar {
+        position: static;
+        align-items: flex-start;
+      }
+
+      .nav { display: none; }
+
+      .section,
+      .method,
+      .hero,
+      footer {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero { padding-top: 38px; }
+
+      h1 {
+        font-size: 36px;
+        line-height: 1.14;
+        word-break: break-all;
+      }
+
+      h2,
+      .cta h2 {
+        max-width: 10.5em;
+        font-size: 30px;
+        line-height: 1.22;
+        word-break: break-all;
+      }
+
+      .hero-lead {
+        max-width: 21em;
+        font-size: 16px;
+      }
+
+      .section-note,
+      .problem p,
+      .pipe-step p,
+      .service p,
+      .industry p,
+      .cta p {
+        max-width: 22em;
+      }
+
+      .hero-visual,
+      .hero-visual img { min-height: 390px; }
+
+      .hud {
+        grid-template-columns: repeat(2, 1fr);
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .hud-item {
+        min-height: 82px;
+        padding: 12px;
+      }
+
+      .hud-item:nth-child(2) { border-right: 0; }
+      .hud-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.12); }
+
+      .diagnosis-grid,
+      .services,
+      .metrics,
+      .industries {
+        grid-template-columns: 1fr;
+      }
+
+      .pipe-step,
+      .problem,
+      .service,
+      .industry { min-height: auto; }
+
+      .section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <nav class="topbar" aria-label="页面导航">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark">AI</span>
+        <span>Tim 张｜企业 AI 转型顾问 / 架构师</span>
+      </a>
+      <div class="nav">
+        <a href="#problem">问题</a>
+        <a href="#method">方法</a>
+        <a href="#service">服务</a>
+        <a href="#loop">闭环</a>
+        <a href="#contact">诊断入口</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div>
+        <p class="kicker">Business AI Transformation</p>
+        <h1>
+          <span class="title-line">把 AI 接进真实</span>
+          <span class="title-line">业务流程，做成</span>
+          <span class="title-line accent-text">可执行的系统。</span>
+        </h1>
+        <p class="hero-lead">
+          我是 Tim 张，企业 AI 转型顾问 / 架构师。用商业、产品和代码的视角，帮中小企业老板梳理 SOP、重构流程，把 AI 从工具演示变成能被团队使用的业务工作流。
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">预约业务流程诊断</a>
+          <a class="btn" href="#method">查看转型方法论</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="企业流程梳理场景图">
+        <img src="已生成图像 1.png" alt="顾问在桌前梳理企业流程与 AI 工作流">
+        <div class="hud" aria-label="核心定位数据">
+          <div class="hud-item">
+            <span class="hud-label">定位</span>
+            <span class="hud-value green">AI 架构师</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">入口</span>
+            <span class="hud-value">流程诊断</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">核心</span>
+            <span class="hud-value cyan">SOP 重构</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">结果</span>
+            <span class="hud-value amber">业务系统</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="problem">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">老板真正卡住的地方</p>
+            <h2>企业用不好 AI，通常不是工具不够多。</h2>
+          </div>
+          <p class="section-note">
+            很多公司一上来买软件、追模型、学提示词，但真实业务里最难的部分，是流程没有被讲清楚，经验没有被结构化，判断标准没有被沉淀。
+          </p>
+        </div>
+
+        <div class="diagnosis-grid">
+          <article class="problem">
+            <span class="tag">流程混乱</span>
+            <h3>每天都在重复，但没人写清楚</h3>
+            <p>销售、客服、内容、培训、报价这些动作反复发生，却依赖个人记忆和临场发挥。</p>
+          </article>
+          <article class="problem">
+            <span class="tag">经验黑箱</span>
+            <h3>老板和老员工懂，新人不会复制</h3>
+            <p>真正值钱的判断藏在脑子里，AI 没有输入，也就无法稳定输出。</p>
+          </article>
+          <article class="problem">
+            <span class="tag">资料沉睡</span>
+            <h3>文档很多，但业务现场没人用</h3>
+            <p>话术、客户资料、课程内容、SOP 躺在文件夹里，没有变成可调用的知识库。</p>
+          </article>
+          <article class="problem">
+            <span class="tag">工具堆叠</span>
+            <h3>试了很多 AI，却没有业务结果</h3>
+            <p>工具可以演示能力，但不能自动替企业完成流程设计、岗位协同和复核机制。</p>
+          </article>
+          <article class="problem">
+            <span class="tag">缺少优先级</span>
+            <h3>不知道第一阶段改哪里最划算</h3>
+            <p>不是所有岗位都值得 AI 化，第一步应该选重复、高频、有资料、能复核的流程。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="method-band" id="method">
+        <div class="method">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Tim 的 AI 落地方法</p>
+              <h2>先重构业务，再接入 AI。</h2>
+            </div>
+            <p class="section-note">
+              这不是工具教程，而是一套从业务诊断到系统交付的路径。目标不是让老板收藏更多工具，而是让公司多一个能执行、能复用、能迭代的业务入口。
+            </p>
+          </div>
+
+          <div class="pipeline">
+            <article class="pipe-step">
+              <span class="step-no">01 / DIAGNOSE</span>
+              <h3>诊断业务流程</h3>
+              <p>通过访谈找出重复动作、关键岗位、资料来源、判断标准和当前最耗人的业务环节。</p>
+            </article>
+            <article class="pipe-step">
+              <span class="step-no">02 / STRUCTURE</span>
+              <h3>梳理 SOP 与知识</h3>
+              <p>把老板经验、团队话术、客户资料和内部文档整理成 AI 能理解、员工能复用的结构。</p>
+            </article>
+            <article class="pipe-step">
+              <span class="step-no">03 / DESIGN</span>
+              <h3>设计 AI 参与节点</h3>
+              <p>明确 AI 在哪里生成、判断、检索、总结或提醒，同时保留人工复核和责任边界。</p>
+            </article>
+            <article class="pipe-step">
+              <span class="step-no">04 / SYSTEMIZE</span>
+              <h3>搭建可执行工作流</h3>
+              <p>把流程做成企业知识库、销售助手、内容生产线、客服 FAQ 或内部 SOP 助手。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="service">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">服务产品结构</p>
+            <h2>从一次诊断开始，逐步变成企业自己的 AI 业务系统。</h2>
+          </div>
+          <p class="section-note">
+            第一阶段不急着卖大型系统。先卖判断和梳理：这个企业到底哪里适合 AI 化，第一步做什么最划算。
+          </p>
+        </div>
+
+        <div class="services">
+          <article class="service featured">
+            <h3>AI 业务流程诊断</h3>
+            <p class="price">999 起</p>
+            <p>适合想用 AI、但不知道从哪里开始的老板。先判断流程、资料和团队现状。</p>
+            <ul>
+              <li>60-90 分钟业务访谈</li>
+              <li>SOP 成熟度判断</li>
+              <li>AI 可改造环节清单</li>
+              <li>第一阶段落地建议</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>SOP + AI 工作流设计</h3>
+            <p class="price">9800 起</p>
+            <p>把一个高频重复流程拆成 AI 可以参与、员工可以执行的工作流方案。</p>
+            <ul>
+              <li>单一业务流程拆解</li>
+              <li>输入与输出定义</li>
+              <li>AI 节点与复核节点设计</li>
+              <li>工作流原型或流程图</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>企业 AI 系统轻定制</h3>
+            <p class="price">19800 起</p>
+            <p>把梳理清楚的 SOP、知识库和业务流程，做成企业能使用的 AI 助理。</p>
+            <ul>
+              <li>企业知识库</li>
+              <li>销售话术 AI 助理</li>
+              <li>客户跟进助手</li>
+              <li>内容生产线</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>企业 AI 工作流定制</h3>
+            <p class="price">29800 起</p>
+            <p>针对明确业务场景，完成从诊断、设计、搭建到上线迭代的完整交付。</p>
+            <ul>
+              <li>业务场景评估</li>
+              <li>流程方案设计</li>
+              <li>系统搭建与上线</li>
+              <li>迭代维护与案例沉淀</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="loop">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">内容获客闭环</p>
+            <h2>公开视频负责击中问题，私域诊断负责形成成交。</h2>
+          </div>
+          <p class="section-note">
+            这不是泛泛涨粉项目，而是一个顾问型获客闭环：内容筛出有真实业务问题的老板，诊断承接需求，交付沉淀案例，再反哺内容。
+          </p>
+        </div>
+
+        <div class="loop-wrap">
+          <div class="loop" aria-label="顾问型获客闭环">
+            <div class="loop-node"><strong>短视频 / 公众号</strong><span>围绕 SOP、流程、行业案例和 AI 工作流持续输出。</span></div>
+            <div class="loop-node"><strong>老板被问题击中</strong><span>看到自己公司的混乱、重复、经验无法复制。</span></div>
+            <div class="loop-node"><strong>评论 / 私信 / 加微信</strong><span>通过问题引导进入私域，而不是直接硬卖系统。</span></div>
+            <div class="loop-node"><strong>初步判断</strong><span>确认行业、团队、流程、资料和预算意愿。</span></div>
+            <div class="loop-node"><strong>AI 业务诊断</strong><span>先卖判断，明确第一阶段最值得改造的环节。</span></div>
+            <div class="loop-node"><strong>方案与交付</strong><span>SOP、工作流、知识库、AI 助理或轻定制系统。</span></div>
+            <div class="loop-node"><strong>案例反哺内容</strong><span>沉淀匿名案例，变成下一轮内容与信任资产。</span></div>
+          </div>
+
+          <aside class="metrics" aria-label="30 天冲刺目标">
+            <div class="metric"><strong>40-60</strong><span>条短视频</span></div>
+            <div class="metric"><strong>6-10</strong><span>篇公众号 / 长图文</span></div>
+            <div class="metric"><strong>30</strong><span>个有效咨询</span></div>
+            <div class="metric"><strong>10-15</strong><span>次初步沟通</span></div>
+            <div class="metric"><strong>1-3</strong><span>个付费诊断或轻定制客户</span></div>
+            <div class="metric"><strong>1-3</strong><span>个匿名案例资产</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">优先客户场景</p>
+            <h2>先从有员工、有客户、有资料、有重复流程的公司开始。</h2>
+          </div>
+          <p class="section-note">
+            最适合 AI 化的不是“听起来先进”的岗位，而是已经反复发生、资料相对完整、结果可以复核的真实流程。
+          </p>
+        </div>
+
+        <div class="industries">
+          <article class="industry">
+            <h3>跨境 / 短视频电商</h3>
+            <p>内容产能不稳定，产品卖点靠人想，脚本、标题、素材拆解重复，多语言内容成本高。</p>
+            <div class="chips">
+              <span class="chip">内容生产线</span>
+              <span class="chip">卖点库</span>
+              <span class="chip">脚本生成器</span>
+            </div>
+          </article>
+          <article class="industry">
+            <h3>培训 / 咨询 / 教育</h3>
+            <p>课程资料多但复用差，讲师经验难沉淀，销售跟进依赖个人，客户问题反复回答。</p>
+            <div class="chips">
+              <span class="chip">课程知识库</span>
+              <span class="chip">讲师资源库</span>
+              <span class="chip">FAQ 助理</span>
+            </div>
+          </article>
+          <article class="industry">
+            <h3>销售型中小企业</h3>
+            <p>销售话术不统一，客户跟进靠记忆，报价和方案重复，新员工成长速度慢。</p>
+            <div class="chips">
+              <span class="chip">销售话术库</span>
+              <span class="chip">跟进助手</span>
+              <span class="chip">方案生成器</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section final" id="contact">
+        <div class="cta">
+          <p class="eyebrow">从一次诊断开始</p>
+          <h2>如果你的公司想用 AI，第一步不是买工具，而是找出最值得改造的业务流程。</h2>
+          <p>
+            告诉我你的行业、团队规模、最重复耗人的流程，以及现有 SOP、客户资料、话术或内部文档情况。我会先帮你判断：这件事适不适合 AI 化，应该先做诊断、工作流设计，还是轻定制系统。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#service">从诊断产品开始</a>
+            <a class="btn" href="#problem">查看适合 AI 化的业务环节</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Tim 张｜企业 AI 转型顾问 / 架构师。不是教企业玩 AI 工具，而是帮企业梳理 SOP、重构流程，把 AI 接进真实业务系统。
+    </footer>
+  </div>
+</body>
+</html>
