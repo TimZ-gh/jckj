@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>精粹科技跨境电商标准 SOP 0.5 版</title>
+    <link rel="stylesheet" href="./sop-v0.5.css">
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar">
+        <strong>精粹科技跨境电商项目</strong>
+        <div>
+          <a href="#overview">总览</a>
+          <a href="#operation">运营</a>
+          <a href="#content">内容</a>
+          <a href="#bd">BD</a>
+          <a href="#warehouse">仓储</a>
+          <a href="#finance">财务</a>
+        </div>
+      </nav>
+
+      <section class="hero-inner">
+        <div>
+          <p class="eyebrow">Standard SOP · 0.5 版</p>
+          <h1>跨境电商 AI 半自动化工作流标准 SOP</h1>
+          <p class="lead">
+            本页根据各部门反馈整理，用于下一轮方案沟通。0.5 版表示：主流程已梳理，关键节点已标注；仍需各部门补充真实表格、字段样本和特殊异常案例后，形成正式 SOP。
+          </p>
+        </div>
+        <aside class="status-panel">
+          <strong>本版用途</strong>
+          <span>确认现有 SOP</span>
+          <span>标出人工把控点</span>
+          <span>沉淀数据字段</span>
+          <span>圈定 AI 可辅助动作</span>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="section" id="overview">
+        <div class="section-head">
+          <p class="eyebrow">SOP map</p>
+          <h2>5 张标准 SOP 总览</h2>
+          <p>当前最适合先标准化的不是单个部门，而是这 5 条相互衔接的业务链路。每条 SOP 都包含输入、动作、人工确认、输出和待补资料。</p>
+        </div>
+
+        <div class="overview-grid">
+          <article>
+            <b>01</b>
+            <h3>运营 / Listing</h3>
+            <p>选品、扒品、定价、图包、上架、活动、差评和数据反馈。</p>
+          </article>
+          <article>
+            <b>02</b>
+            <h3>内容 / 视频</h3>
+            <p>选题、脚本、Prompt、AI 生成、剪辑包装、审核和成片归档。</p>
+          </article>
+          <article>
+            <b>03</b>
+            <h3>BD / 达人</h3>
+            <p>达人筛选、邀约、沟通、寄样判断、发布回收和达人分级。</p>
+          </article>
+          <article>
+            <b>04</b>
+            <h3>仓储 / 采购</h3>
+            <p>供应商、库存、样品、出库、物流异常、退货和补货判断。</p>
+          </article>
+          <article>
+            <b>05</b>
+            <h3>财务 / 统计</h3>
+            <p>订单、采购价、物流费、回款、异常、付款、利润和归档。</p>
+          </article>
+        </div>
+
+        <div class="legend">
+          <span class="input">输入资料</span>
+          <span class="human">人工确认</span>
+          <span class="ai">AI 可辅助</span>
+          <span class="data">数据沉淀</span>
+          <span class="todo">待追问</span>
+        </div>
+      </section>
+
+      <section class="sop section" id="operation">
+        <div class="sop-head">
+          <span>01</span>
+          <div>
+            <p class="eyebrow">Operation / Listing</p>
+            <h2>运营 / Listing SOP</h2>
+            <p>目标：把“选品、扒品、定价、上架、出单后反馈”整理为可复用流程，降低人工重复上架和数据复制错误。</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="step input"><b>选品候选</b><small>第三方平台、竞品、国家、销量</small></div>
+          <div class="step human"><b>侵权 / 成本审核</b><small>品牌、外观、采购价、重量体积</small></div>
+          <div class="step ai"><b>货源与售价核算</b><small>1688 找同款、比价、利润测算</small></div>
+          <div class="step ai"><b>扒品图包</b><small>图片、标题、详情页、规格</small></div>
+          <div class="step human"><b>Listing 审核</b><small>标题、关键词、五点描述、资质图</small></div>
+          <div class="step data"><b>上架 / 活动</b><small>链接、店铺、国家、价格、状态</small></div>
+          <div class="step data"><b>出单 / 反馈</b><small>发货、退款拦截、差评、数据复盘</small></div>
+        </div>
+
+        <div class="sop-grid">
+          <article>
+            <h3>输入资料</h3>
+            <ul>
+              <li>选品表、竞品链接、第三方平台数据。</li>
+              <li>1688 采购价、重量、体积、供应商信息。</li>
+              <li>图包、标题、关键词、资质图、店铺后台规则。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>人工把控</h3>
+            <ul>
+              <li>是否侵权、是否可采购、是否有价格优势。</li>
+              <li>标题 / 图包 / 详情页是否合规。</li>
+              <li>上架失败、违规词、差评和退款处理。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI 可辅助</h3>
+            <ul>
+              <li>多平台选品数据汇总和竞品采集。</li>
+              <li>1688 找货源、比价、利润测算。</li>
+              <li>图包整理、标题生成、违规词初筛、批量上架辅助。</li>
+            </ul>
+          </article>
+          <article class="todo-card">
+            <h3>待追问</h3>
+            <ul>
+              <li>选品表和上架表样例。</li>
+              <li>侵权判断规则和违规词记录。</li>
+              <li>多国家 / 多店铺上架差异。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="sop section" id="content">
+        <div class="sop-head">
+          <span>02</span>
+          <div>
+            <p class="eyebrow">Content / Video</p>
+            <h2>内容 / 视频 SOP</h2>
+            <p>目标：把 AI 图片、AI 视频、Prompt、剪辑审核和成片反馈变成可沉淀、可复用、可追踪的内容生产流程。</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="step input"><b>选题 / 参考</b><small>抖音、TK、B 站、产品卖点</small></div>
+          <div class="step human"><b>创意与脚本</b><small>场景、角度、卖点、节日氛围</small></div>
+          <div class="step ai"><b>Prompt 生成</b><small>系统提示词、用户提示词、反推提示词</small></div>
+          <div class="step ai"><b>AI 出图 / 出视频</b><small>RunningHub、ComfyUI、即梦、小云雀</small></div>
+          <div class="step human"><b>剪辑包装</b><small>剪映、字幕、音频、特效、修复错误</small></div>
+          <div class="step human"><b>审核确认</b><small>产品、画面、重复率、品牌标识</small></div>
+          <div class="step data"><b>成片归档</b><small>素材、Prompt、成片、表现数据</small></div>
+        </div>
+
+        <div class="sop-grid">
+          <article>
+            <h3>输入资料</h3>
+            <ul>
+              <li>产品图、卖点、参考视频、素材库。</li>
+              <li>Prompt 文档、系统提示词、用户提示词。</li>
+              <li>手机视频内容分析表、达人转化表。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>人工把控</h3>
+            <ul>
+              <li>提示词是否准确，产品外观是否错误。</li>
+              <li>画面是否错位、是否出现品牌标识。</li>
+              <li>素材重复率、非原创风险、最终成片质量。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI 可辅助</h3>
+            <ul>
+              <li>图片反推、图生图、视频提示词扩写。</li>
+              <li>脚本初稿、多版本素材生成、视频放大。</li>
+              <li>成片初筛和素材分类辅助。</li>
+            </ul>
+          </article>
+          <article class="todo-card">
+            <h3>待追问</h3>
+            <ul>
+              <li>Prompt 文档样例和目录结构。</li>
+              <li>成片审核评分标准。</li>
+              <li>非原创 / 打回记录字段。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="sop section" id="bd">
+        <div class="sop-head">
+          <span>03</span>
+          <div>
+            <p class="eyebrow">BD / Creator</p>
+            <h2>BD / 达人 SOP</h2>
+            <p>目标：把达人筛选、批量邀约、寄样判断、发布链接回收和达人分级变成标准流程，减少靠人工记忆推进。</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="step input"><b>达人筛选</b><small>类目、粉丝、GPM、履约度</small></div>
+          <div class="step ai"><b>批量邀约</b><small>邀请函、私信、商品卡链接</small></div>
+          <div class="step human"><b>沟通判断</b><small>申样、报价、是否愿发视频</small></div>
+          <div class="step human"><b>寄样决策</b><small>先发视频、出单后寄样、先寄样</small></div>
+          <div class="step data"><b>寄样跟进</b><small>快递单号、到货、履约时间</small></div>
+          <div class="step data"><b>发布回收</b><small>链接、播放、互动、转化</small></div>
+          <div class="step data"><b>达人分级</b><small>优质、可跟进、低价值、黑名单</small></div>
+        </div>
+
+        <div class="sop-grid">
+          <article>
+            <h3>输入资料</h3>
+            <ul>
+              <li>达人表、达人主页、粉丝量、GPM、类目。</li>
+              <li>BD 话术、商品卡链接、合作记录。</li>
+              <li>寄样记录、发布链接、达人视频数据。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>人工把控</h3>
+            <ul>
+              <li>是否寄样、寄哪个产品、是否长期维护。</li>
+              <li>合作价格、达人优先级、赔偿承诺边界。</li>
+              <li>达人是否适合当前产品和国家市场。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI 可辅助</h3>
+            <ul>
+              <li>达人筛选、标签归类、批量邀约。</li>
+              <li>话术生成、跟进提醒、发布链接检测。</li>
+              <li>达人数据导出、视频类型识别、表现汇总。</li>
+            </ul>
+          </article>
+          <article class="todo-card">
+            <h3>待追问</h3>
+            <ul>
+              <li>达人表样例和字段含义。</li>
+              <li>达人分级标准。</li>
+              <li>成功 / 失败达人案例。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="sop section" id="warehouse">
+        <div class="sop-head">
+          <span>04</span>
+          <div>
+            <p class="eyebrow">Warehouse / Procurement</p>
+            <h2>仓储 / 采购 SOP</h2>
+            <p>目标：统一多仓库存、采购、寄样、出库、物流异常和退货入库流程，解决多系统数据不共享和人工补标问题。</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="step input"><b>采购 / 入库</b><small>供应商、采购价、批次、SKU</small></div>
+          <div class="step data"><b>库存更新</b><small>国内、欧洲、美国、英国、多系统</small></div>
+          <div class="step input"><b>寄样申请</b><small>BD、达人、SKU、数量、地址</small></div>
+          <div class="step human"><b>核库存 / 打标</b><small>样品订单、达人订单、商品卡订单</small></div>
+          <div class="step data"><b>出库 / 物流</b><small>物流单号、签收、异常</small></div>
+          <div class="step human"><b>退货 / 异常</b><small>缺货、错发、丢件、延迟</small></div>
+          <div class="step data"><b>周转 / 补货</b><small>库存价值、周转率、周转天数</small></div>
+        </div>
+
+        <div class="sop-grid">
+          <article>
+            <h3>输入资料</h3>
+            <ul>
+              <li>库存表、进销存导出表、样品出库表。</li>
+              <li>寄样申请表、物流问题表、供应商表。</li>
+              <li>采购登记表、银行卡 / 支付宝流水。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>人工把控</h3>
+            <ul>
+              <li>国内库存盘点、样品订单打标。</li>
+              <li>退货入库、物流异常、采购付款审核。</li>
+              <li>缺货、错发、延迟、丢件处理方案。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI 可辅助</h3>
+            <ul>
+              <li>整合多系统进销存和库存周转分析。</li>
+              <li>物流轨迹异常提醒、订单自动分类打标。</li>
+              <li>采购数据、流水、付款登记自动核对。</li>
+            </ul>
+          </article>
+          <article class="todo-card">
+            <h3>待追问</h3>
+            <ul>
+              <li>多仓库存表字段样例。</li>
+              <li>寄样申请单和物流问题表。</li>
+              <li>采购付款审核表。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="sop section" id="finance">
+        <div class="sop-head">
+          <span>05</span>
+          <div>
+            <p class="eyebrow">Finance / Statistics</p>
+            <h2>财务 / 统计 SOP</h2>
+            <p>目标：把订单、采购价、物流费、回款、异常、付款申请和合作店铺利润统计统一到可核对、可追溯的财务台账流程。</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="step input"><b>订单导出</b><small>美区、英区、欧区、全量订单</small></div>
+          <div class="step ai"><b>价格匹配</b><small>订单编号、采购价、物流价</small></div>
+          <div class="step data"><b>异常清单</b><small>价格为空、费用异常、报价不符</small></div>
+          <div class="step human"><b>付款 / 发票</b><small>付款申请、物流发票、归档</small></div>
+          <div class="step data"><b>回款台账</b><small>已回款、未回款、部分回款</small></div>
+          <div class="step data"><b>收支统计</b><small>收入、退款、物流费、杂费</small></div>
+          <div class="step human"><b>利润确认</b><small>合作店铺营收、成本、净利、分成</small></div>
+        </div>
+
+        <div class="sop-grid">
+          <article>
+            <h3>输入资料</h3>
+            <ul>
+              <li>订单明细、物流费表、采购价表。</li>
+              <li>回款明细、收支明细、异常订单清单。</li>
+              <li>合作店铺利润统计表。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>人工把控</h3>
+            <ul>
+              <li>付款申请、发票合规确认。</li>
+              <li>收款账号申请与绑定。</li>
+              <li>异常订单处理和利润口径确认。</li>
+            </ul>
+          </article>
+          <article>
+            <h3>AI 可辅助</h3>
+            <ul>
+              <li>多文件合并、格式统一、订单编号匹配。</li>
+              <li>自动标记异常订单并生成异常清单。</li>
+              <li>自动归集收入支出，按店铺生成收支表。</li>
+            </ul>
+          </article>
+          <article class="todo-card">
+            <h3>待追问</h3>
+            <ul>
+              <li>订单明细和物流费表样例。</li>
+              <li>利润统计口径和分成规则。</li>
+              <li>异常订单分类标准。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <strong>0.5 版说明：</strong>
+      本页用于方案前的 SOP 对齐。空缺项在下一轮追问后补齐，再形成 1.0 版正式 SOP 和字段清单。
+    </footer>
+  </body>
+</html>
