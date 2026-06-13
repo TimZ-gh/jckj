@@ -1,0 +1,1878 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ray 留学规划诊断报告样稿</title>
+    <style>
+      :root {
+        --ink: #0b1f3a;
+        --muted: #5d6b82;
+        --line: #dce5f2;
+        --soft: #f4f8fd;
+        --panel: #ffffff;
+        --blue: #1559d1;
+        --blue-2: #2f7df6;
+        --navy: #08275a;
+        --cyan: #1aa3d9;
+        --green: #16a064;
+        --orange: #f28c28;
+        --red: #d94b4b;
+        --shadow: 0 18px 55px rgba(12, 41, 83, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(47, 125, 246, 0.12), transparent 30rem),
+          linear-gradient(180deg, #eef5ff 0, #f8fbff 22rem, #ffffff 100%);
+        font-family:
+          Inter,
+          "SF Pro Display",
+          "PingFang SC",
+          "Microsoft YaHei",
+          Arial,
+          sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .report-shell {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;
+      }
+
+      .side-toc {
+        position: sticky;
+        top: 84px;
+        max-height: calc(100vh - 104px);
+        overflow: auto;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 28px rgba(13, 42, 85, 0.08);
+      }
+
+      .side-toc h2 {
+        margin: 0 0 12px;
+        font-size: 15px;
+      }
+
+      .side-toc a {
+        display: block;
+        margin: 3px 0;
+        padding: 8px 9px;
+        border-radius: 7px;
+        color: #49627f;
+        text-decoration: none;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .side-toc a.active,
+      .side-toc a:hover {
+        color: var(--blue);
+        background: #eaf2ff;
+        font-weight: 800;
+      }
+
+      .report-content {
+        min-width: 0;
+        padding-bottom: 460px;
+      }
+
+      .report-page {
+        scroll-margin-top: 84px;
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(24px) scale(0.985);
+        transition:
+          opacity 0.65s ease,
+          filter 0.65s ease,
+          transform 0.65s ease;
+      }
+
+      .report-page.in-view {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+
+      .page-kicker {
+        margin: 0 0 8px;
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .hero {
+        min-height: 520px;
+        padding: 28px 0 40px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+        gap: 32px;
+        align-items: center;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(220, 229, 242, 0.86);
+        background: rgba(248, 251, 255, 0.9);
+        backdrop-filter: blur(16px);
+      }
+
+      .topbar-inner {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        color: white;
+        font-size: 15px;
+      }
+
+      .top-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      button {
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .ghost-button,
+      .primary-button {
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 8px;
+        font-weight: 700;
+      }
+
+      .ghost-button {
+        color: var(--navy);
+        background: #eaf2ff;
+      }
+
+      .primary-button {
+        color: white;
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        box-shadow: 0 10px 24px rgba(21, 89, 209, 0.25);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 7px 10px;
+        border: 1px solid rgba(21, 89, 209, 0.16);
+        border-radius: 999px;
+        color: var(--blue);
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .hero h1 {
+        margin: 22px 0 18px;
+        font-size: clamp(34px, 4.5vw, 58px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+        margin: 0 0 28px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .hero-points {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .point {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .point strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 22px;
+      }
+
+      .point span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .summary-panel {
+        border: 1px solid rgba(220, 229, 242, 0.95);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .summary-head {
+        padding: 24px;
+        color: white;
+        background:
+          linear-gradient(135deg, rgba(8, 39, 90, 0.96), rgba(21, 89, 209, 0.92)),
+          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.28), transparent 16rem);
+      }
+
+      .summary-head p {
+        margin: 4px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .summary-grid {
+        padding: 20px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .metric-row {
+        display: grid;
+        grid-template-columns: 118px 1fr auto;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .metric-row span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .track {
+        height: 10px;
+        overflow: hidden;
+        border-radius: 99px;
+        background: #e6edf7;
+      }
+
+      .fill {
+        height: 100%;
+        width: var(--value);
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--blue), var(--cyan));
+      }
+
+      section {
+        padding: 38px 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: 30px;
+      }
+
+      .section-head p {
+        max-width: 560px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .grid-2,
+      .grid-3 {
+        display: grid;
+        gap: 16px;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 12px 28px rgba(13, 42, 85, 0.08);
+        transition:
+          border-color 0.28s ease,
+          box-shadow 0.28s ease,
+          transform 0.28s ease;
+      }
+
+      .card:hover {
+        border-color: rgba(21, 89, 209, 0.42);
+        box-shadow: 0 18px 42px rgba(13, 42, 85, 0.14);
+        transform: translateY(-3px);
+      }
+
+      .card-pad {
+        padding: 22px;
+      }
+
+      .card h3 {
+        margin: 0 0 12px;
+        font-size: 19px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .hex-wrap {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+
+      #hexChart {
+        width: 100%;
+        max-width: 330px;
+        aspect-ratio: 1;
+      }
+
+      .label-small {
+        fill: #31506f;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .score-pill {
+        display: inline-flex;
+        min-width: 54px;
+        justify-content: center;
+        padding: 4px 8px;
+        border-radius: 999px;
+        color: #0c3f2b;
+        background: #def7ec;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 13px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #49627f;
+        background: #f6f9fe;
+        font-size: 13px;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      tbody tr {
+        opacity: 0.2;
+        transform: translateX(-8px);
+        transition:
+          background 0.22s ease,
+          opacity 0.45s ease,
+          transform 0.45s ease;
+      }
+
+      tbody tr.row-visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .report-page.in-view tbody tr {
+        will-change: opacity, transform;
+      }
+
+      tbody tr:hover {
+        background: #f0f6ff;
+      }
+
+      .tag {
+        display: inline-flex;
+        padding: 4px 9px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+        transition:
+          box-shadow 0.22s ease,
+          transform 0.22s ease;
+      }
+
+      .tag:hover {
+        box-shadow: 0 8px 18px rgba(21, 89, 209, 0.16);
+        transform: translateY(-1px);
+      }
+
+      .tag.blue {
+        color: #114c9d;
+        background: #e6f0ff;
+      }
+
+      .tag.green {
+        color: #0c6f46;
+        background: #def7ec;
+      }
+
+      .tag.orange {
+        color: #94500d;
+        background: #fff0da;
+      }
+
+      .tag.red {
+        color: #9e2c2c;
+        background: #ffe6e6;
+      }
+
+      .course-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .course-row {
+        display: grid;
+        grid-template-columns: 90px 1fr 88px;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .course-row strong {
+        font-size: 15px;
+      }
+
+      .bar {
+        height: 16px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #e6edf7;
+      }
+
+      .bar span {
+        display: block;
+        width: var(--value);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--blue), var(--cyan));
+        transform-origin: left;
+        animation: growBar 1s ease both;
+      }
+
+      .roi-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .roi-card.recommended {
+        border-color: rgba(21, 89, 209, 0.46);
+        box-shadow: 0 18px 42px rgba(21, 89, 209, 0.14);
+      }
+
+      .roi-card h3 {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .roi-index {
+        font-size: 34px;
+        font-weight: 900;
+        color: var(--blue);
+      }
+
+      .roi-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 14px 0;
+      }
+
+      .mini {
+        padding: 10px;
+        border-radius: 8px;
+        background: var(--soft);
+      }
+
+      .mini b {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .risk-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .risk {
+        padding: 16px;
+        border-left: 4px solid var(--orange);
+      }
+
+      .risk.high {
+        border-left-color: var(--red);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 12px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 112px 1fr 120px;
+        gap: 14px;
+        align-items: start;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .step time {
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .cta {
+        margin: 48px 0 70px;
+        padding: 34px;
+        border-radius: 8px;
+        color: white;
+        background:
+          linear-gradient(135deg, rgba(8, 39, 90, 0.97), rgba(21, 89, 209, 0.95)),
+          radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.18), transparent 15rem);
+        box-shadow: var(--shadow);
+      }
+
+      .cta h2 {
+        margin: 0 0 12px;
+        font-size: 30px;
+      }
+
+      .cta p {
+        max-width: 780px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.76);
+        line-height: 1.8;
+      }
+
+      .strategy-stage {
+        position: relative;
+        min-height: 260px;
+        overflow: hidden;
+        border-radius: 8px;
+        color: white;
+        background: linear-gradient(135deg, #08275a, #1559d1);
+      }
+
+      #strategyCanvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .stage-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        padding: 30px;
+        margin: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(8, 39, 90, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      .stage-copy p {
+        color: rgba(255, 255, 255, 0.76);
+        line-height: 1.8;
+      }
+
+      .data-counter {
+        display: inline-block;
+      }
+
+      .dense-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .insight {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .insight b {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .matrix-cell {
+        min-height: 112px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .matrix-cell strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .decision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .decision-card {
+        padding: 18px;
+      }
+
+      .conclusion-list {
+        display: grid;
+        gap: 12px;
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .conclusion-list li {
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.84);
+        transition:
+          background 0.24s ease,
+          transform 0.24s ease;
+      }
+
+      .conclusion-list li:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: translateX(4px);
+      }
+
+      #conclusion {
+        min-height: 520px !important;
+      }
+
+      @keyframes growBar {
+        from {
+          transform: scaleX(0);
+        }
+
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @media (max-width: 940px) {
+        .report-shell {
+          display: block;
+        }
+
+        .side-toc {
+          position: sticky;
+          top: 64px;
+          z-index: 8;
+          display: flex;
+          gap: 6px;
+          max-height: none;
+          margin: 12px 0 0;
+          overflow-x: auto;
+        }
+
+        .side-toc h2 {
+          display: none;
+        }
+
+        .side-toc a {
+          white-space: nowrap;
+        }
+
+        .hero,
+        .grid-2,
+        .grid-3,
+        .hex-wrap,
+        .risk-grid,
+        .dense-list,
+        .matrix,
+        .decision-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-points {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head p {
+          margin-top: 10px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .top-actions {
+          display: none;
+        }
+
+        .metric-row,
+        .course-row,
+        .step {
+          grid-template-columns: 1fr;
+        }
+
+        th,
+        td {
+          padding: 10px 8px;
+        }
+      }
+
+      @media print {
+        .topbar {
+          display: none;
+        }
+
+        body {
+          background: white;
+        }
+
+        section,
+        .hero {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">R</div>
+          <span>Ray 留学规划诊断报告</span>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-button" type="button" onclick="document.querySelector('#roi').scrollIntoView({behavior:'smooth'})">查看 ROI</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page report-shell">
+      <aside class="side-toc" aria-label="报告目录">
+        <h2>报告目录</h2>
+        <a href="#cover">00 封面总览</a>
+        <a href="#methodology">01 评估方法论</a>
+        <a href="#family-context">02 家庭背景</a>
+        <a href="#goal-map">03 目标地图</a>
+        <a href="#ability-hexagon">04 六维能力</a>
+        <a href="#language">05 语言能力</a>
+        <a href="#academic">06 学术能力</a>
+        <a href="#subject">07 学科潜力</a>
+        <a href="#psychology">08 心理适应</a>
+        <a href="#planning">09 规划清晰度</a>
+        <a href="#course-fit">10 课程适配</a>
+        <a href="#country-fit">11 国家路径</a>
+        <a href="#major-fit">12 专业方向</a>
+        <a href="#competitiveness">13 竞争力模型</a>
+        <a href="#roi">14 ROI 测算</a>
+        <a href="#budget">15 预算结构</a>
+        <a href="#risk">16 风险预警</a>
+        <a href="#timeline">17 行动规划</a>
+        <a href="#service-map">18 服务地图</a>
+        <a href="#consultant-script">19 顾问解读</a>
+        <a href="#evidence">20 数据证据</a>
+        <a href="#decision">21 决策会议</a>
+        <a href="#conclusion">22 结论建议</a>
+      </aside>
+
+      <div class="report-content">
+      <section class="hero report-page in-view" id="cover">
+        <div>
+          <span class="eyebrow">全案留学规划 · 动态 HTML 报告样稿</span>
+          <h1>学生综合能力与留学投资回报诊断</h1>
+          <p class="hero-copy">
+            本报告基于学生测评数据、课程体系适配模型与家庭投入条件，综合评估当前能力状态、留学路径优先级、关键风险和未来 12 个月规划重点。
+          </p>
+          <div class="hero-points">
+            <div class="point">
+              <strong id="heroFit">82</strong>
+              <span>首选路径适配分</span>
+            </div>
+            <div class="point">
+              <strong id="heroRoi">76</strong>
+              <span>均衡型 ROI 指数</span>
+            </div>
+            <div class="point">
+              <strong>18 个月</strong>
+              <span>建议规划周期</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="summary-panel" aria-label="学生摘要">
+          <div class="summary-head">
+            <h2>Ray · 高一学生</h2>
+            <p>目标方向：英国 / 新加坡 · 预算：中等偏上 · 报告日期：2026-06-13</p>
+          </div>
+          <div class="summary-grid" id="summaryMetrics"></div>
+        </aside>
+      </section>
+
+      <section class="report-page" id="methodology">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">01 / Methodology</p>
+            <h2>评估方法论与报告可信度</h2>
+          </div>
+          <p>报告不是单一问卷结果，而是把测评、路径模型、家庭条件和顾问判断放在同一个决策框架中。</p>
+        </div>
+        <div class="strategy-stage card">
+          <canvas id="strategyCanvas" aria-label="规划策略动态图"></canvas>
+          <div class="stage-copy">
+            <h3>四层诊断模型</h3>
+            <p>第一层评估学生能力，第二层判断课程体系，第三层测算家庭投入与风险，第四层输出可执行规划。每一层都通过数据表格和顾问校准形成结论闭环。</p>
+            <div class="hero-points">
+              <div class="point"><strong class="data-counter" data-target="6">0</strong><span>核心能力维度</span></div>
+              <div class="point"><strong class="data-counter" data-target="23">0</strong><span>报告章节页面</span></div>
+              <div class="point"><strong class="data-counter" data-target="12">0</strong><span>个月行动计划</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="family-context">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">02 / Family Context</p>
+            <h2>家庭背景与决策约束</h2>
+          </div>
+          <p>留学规划不是只看学生成绩，还要看预算、时间、家长期望和家庭可持续支持能力。</p>
+        </div>
+        <div class="grid-3">
+          <div class="card card-pad"><h3>预算边界</h3><p class="muted">家庭可接受中等偏上投入，适合做均衡型规划，不建议一开始进入高消耗冲刺模式。</p><span class="tag blue">中等偏上</span></div>
+          <div class="card card-pad"><h3>时间窗口</h3><p class="muted">距离关键申请节点约 18 个月，仍有时间完成英语、选课、背景提升和专业探索。</p><span class="tag green">窗口良好</span></div>
+          <div class="card card-pad"><h3>决策状态</h3><p class="muted">家庭目标方向明确度高于学生专业方向明确度，需要通过顾问会议统一决策语言。</p><span class="tag orange">需校准</span></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="goal-map">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">03 / Goal Map</p>
+            <h2>目标院校与路径地图</h2>
+          </div>
+          <p>把目标拆成冲刺、匹配、保底三层，避免家长只盯单一名校，导致预算和时间投入失衡。</p>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>层级</th><th>目标定位</th><th>关键条件</th><th>规划动作</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tag orange">冲刺</span></td><td>英国 G5 边缘 / 新加坡头部项目</td><td>高分学术成绩、强文书、明确专业叙事</td><td>补强学术英语与可展示项目成果</td></tr>
+              <tr><td><span class="tag green">匹配</span></td><td>英国 QS Top 50 / 港新优质项目</td><td>A-Level 选科合理、成绩稳定、背景闭环</td><td>作为主申请层级持续推进</td></tr>
+              <tr><td><span class="tag blue">保底</span></td><td>英国 Top 100 / 加拿大优质本科</td><td>路径稳定、材料完整、预算可控</td><td>保留 1-2 条低风险备选路线</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="report-page" id="ability-hexagon">
+        <div class="section-head">
+          <h2>一、留学竞争力六维图</h2>
+          <p>六边形图用于呈现学生当前像“游戏角色面板”一样的能力状态，方便家长快速理解孩子的优势、短板和留学准备成熟度。</p>
+        </div>
+        <div class="card card-pad hex-wrap">
+          <svg id="hexChart" viewBox="0 0 360 360" role="img" aria-label="学生六维能力图"></svg>
+          <div>
+            <h3>核心判断</h3>
+            <p class="muted">
+              Ray 的优势集中在学术学习力、家庭支持和语言基础，适合进入中高强度国际课程规划。当前主要短板是规划清晰度和心理适应力，需要通过专业探索、目标院校拆解和压力管理训练降低后续试错成本。
+            </p>
+            <table aria-label="六维能力评分表">
+              <thead>
+                <tr>
+                  <th>维度</th>
+                  <th>得分</th>
+                  <th>状态</th>
+                  <th>影响</th>
+                </tr>
+              </thead>
+              <tbody id="hexTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="language">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">05 / Language</p>
+            <h2>语言能力专项诊断</h2>
+          </div>
+          <p>语言不只看词汇和考试，更看学术阅读、观点表达和长期英文材料消化能力。</p>
+        </div>
+        <div class="dense-list">
+          <div class="insight"><b>词汇与阅读</b><span class="muted">基础词汇良好，可进入标化体系训练；需要加大学术文章阅读密度。</span></div>
+          <div class="insight"><b>写作与表达</b><span class="muted">能完成基础表达，但观点深度、结构化论证和例证展开需要专项训练。</span></div>
+          <div class="insight"><b>听说适应</b><span class="muted">日常沟通可推进，课堂讨论和 presentation 自信度仍需场景训练。</span></div>
+          <div class="insight"><b>投入建议</b><span class="muted">优先投入学术英语，而不是泛化口语课，ROI 更高。</span></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="academic">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">06 / Academic</p>
+            <h2>学术学习力评估</h2>
+          </div>
+          <p>学术学习力决定学生能否在国际课程中持续拿分，也决定背景提升项目是否能沉淀为成果。</p>
+        </div>
+        <div class="matrix">
+          <div class="matrix-cell"><strong>任务拆解</strong><span class="tag green">82</span><p class="muted">能按阶段拆分学习任务。</p></div>
+          <div class="matrix-cell"><strong>错题闭环</strong><span class="tag blue">76</span><p class="muted">已有复盘意识，但规律提炼不足。</p></div>
+          <div class="matrix-cell"><strong>长期执行</strong><span class="tag blue">79</span><p class="muted">适合 12 个月周期规划。</p></div>
+          <div class="matrix-cell"><strong>学术表达</strong><span class="tag orange">68</span><p class="muted">需要从“会做题”升级到“会解释”。</p></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="subject">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">07 / Subject Potential</p>
+            <h2>学科潜力与选科建议</h2>
+          </div>
+          <p>选科直接影响课程难度、申请专业和未来职业路径，是规划中最需要早做决定的环节。</p>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>选科方向</th><th>适配度</th><th>优势</th><th>风险</th><th>建议</th></tr></thead>
+            <tbody>
+              <tr><td>数学 + 经济 + 商科</td><td><span class="tag green">高</span></td><td>连接商科申请叙事</td><td>数学成绩需稳定</td><td>建议主方案</td></tr>
+              <tr><td>数学 + 物理 + 计算机</td><td><span class="tag blue">中高</span></td><td>利于数据与工程交叉</td><td>压力较大</td><td>作为冲刺备选</td></tr>
+              <tr><td>经济 + 心理 + 媒体</td><td><span class="tag orange">中</span></td><td>表达与兴趣空间大</td><td>竞争力证明较弱</td><td>需补作品与研究</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="report-page" id="psychology">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">08 / Psychology</p>
+            <h2>心理适应与海外生活风险</h2>
+          </div>
+          <p>海外学习的风险往往不是单点能力不足，而是压力、孤独感、表达自信和自我管理叠加造成波动。</p>
+        </div>
+        <div class="grid-3">
+          <div class="card card-pad"><h3>抗压弹性</h3><p class="muted">当前为中等偏上，面对连续失败时需要顾问和家庭提供复盘机制。</p></div>
+          <div class="card card-pad"><h3>独立生活</h3><p class="muted">建议提前训练作息、财务、沟通和自我求助能力。</p></div>
+          <div class="card card-pad"><h3>跨文化表达</h3><p class="muted">需要通过英文 presentation 和讨论课模拟提升自信。</p></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="planning">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">09 / Planning Clarity</p>
+            <h2>规划清晰度与决策成熟度</h2>
+          </div>
+          <p>规划清晰度得分偏低，是当前最需要优先干预的变量，否则容易出现课程、专业、活动三条线互相打架。</p>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>问题</th><th>表现</th><th>影响</th><th>干预动作</th></tr></thead>
+            <tbody>
+              <tr><td>专业方向未收敛</td><td>商科、数据、传媒均有兴趣</td><td>背景提升容易分散</td><td>4 周专业探索任务</td></tr>
+              <tr><td>院校层级认知粗略</td><td>知道名校但不清楚录取条件</td><td>预算投入缺少依据</td><td>目标院校拆解会议</td></tr>
+              <tr><td>学生与家长目标不同步</td><td>家庭更重视结果，学生更看重体验</td><td>执行中容易反复</td><td>家庭决策共识表</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="report-page" id="course-fit">
+        <div class="section-head">
+          <h2>二、课程体系适配排名</h2>
+          <p>系统将学生能力、学习风格、目标国家和抗压状态映射到主流课程体系，给出首选、备选和谨慎路线。</p>
+        </div>
+        <div class="grid-2">
+          <div class="card card-pad">
+            <h3>课程体系适配条形图</h3>
+            <div class="course-list" id="courseBars"></div>
+          </div>
+          <div class="card">
+            <table aria-label="课程体系适配表">
+              <thead>
+                <tr>
+                  <th>体系</th>
+                  <th>适配分</th>
+                  <th>建议</th>
+                  <th>依据</th>
+                </tr>
+              </thead>
+              <tbody id="courseTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="country-fit">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">11 / Country Fit</p>
+            <h2>国家与地区路径对比</h2>
+          </div>
+          <p>国家选择必须同时考虑预算、课程体系、申请节奏、专业开放度和毕业后发展空间。</p>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>国家/地区</th><th>适配度</th><th>预算压力</th><th>优势</th><th>风险</th></tr></thead>
+            <tbody>
+              <tr><td>英国</td><td><span class="tag green">高</span></td><td>中高</td><td>路径清晰、A-Level 匹配</td><td>对选科和成绩稳定性要求高</td></tr>
+              <tr><td>新加坡</td><td><span class="tag blue">中高</span></td><td>中高</td><td>区域优势强、学历认可高</td><td>竞争激烈，容错率低</td></tr>
+              <tr><td>中国香港</td><td><span class="tag blue">中高</span></td><td>中</td><td>距离近、家庭接受度高</td><td>热门专业分数要求高</td></tr>
+              <tr><td>加拿大</td><td><span class="tag orange">中</span></td><td>中</td><td>过程性评价友好</td><td>与当前主目标关联较弱</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="report-page" id="major-fit">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">12 / Major Fit</p>
+            <h2>专业方向与职业路径</h2>
+          </div>
+          <p>专业建议不能只看兴趣，还要看能力可证明性、申请竞争力和未来职业迁移空间。</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <table>
+              <thead><tr><th>专业方向</th><th>匹配度</th><th>证明材料</th><th>建议</th></tr></thead>
+              <tbody>
+                <tr><td>商科管理</td><td><span class="tag green">高</span></td><td>案例分析、商业阅读、社团项目</td><td>主探索方向</td></tr>
+                <tr><td>数据科学</td><td><span class="tag blue">中高</span></td><td>数学成绩、编程作品、数据项目</td><td>冲刺方向</td></tr>
+                <tr><td>传媒传播</td><td><span class="tag orange">中</span></td><td>写作作品、采访、内容项目</td><td>备选方向</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card card-pad">
+            <h3>职业路径推演</h3>
+            <p class="muted">从 ROI 角度看，商科与数据方向的可迁移能力更强，能沉淀为沟通、分析、研究和项目管理能力，适合当前家庭希望“投入可见、结果可解释”的决策方式。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="competitiveness">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">13 / Competitiveness</p>
+            <h2>申请竞争力模型</h2>
+          </div>
+          <p>竞争力不是单一成绩，而是课程、语言、活动、文书和面试表达共同构成的组合。</p>
+        </div>
+        <div class="matrix">
+          <div class="matrix-cell"><strong>课程成绩</strong><span class="tag green">核心资产</span><p class="muted">决定目标院校下限。</p></div>
+          <div class="matrix-cell"><strong>语言表现</strong><span class="tag blue">关键门槛</span><p class="muted">决定能否顺利进入申请池。</p></div>
+          <div class="matrix-cell"><strong>背景项目</strong><span class="tag orange">可塑空间</span><p class="muted">决定专业叙事强度。</p></div>
+          <div class="matrix-cell"><strong>文书表达</strong><span class="tag blue">放大器</span><p class="muted">决定差异化呈现。</p></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="roi">
+        <div class="section-head">
+          <h2>三、教育投资 ROI 测算</h2>
+          <p>ROI 模块不承诺录取结果，而是帮助家庭比较不同投入方案的成本结构、竞争力增益、风险降低和时间成本节约。</p>
+        </div>
+        <div class="grid-3" id="roiCards"></div>
+      </section>
+
+      <section class="report-page" id="budget">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">15 / Budget</p>
+            <h2>预算结构与投入优先级</h2>
+          </div>
+          <p>真正专业的 ROI 不是鼓励多花钱，而是判断哪些钱必须花、哪些钱可以晚点花、哪些钱不该花。</p>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>投入项目</th><th>优先级</th><th>预计区间</th><th>回报逻辑</th></tr></thead>
+            <tbody>
+              <tr><td>学术英语</td><td><span class="tag green">最高</span></td><td>2-5 万</td><td>提升课程、考试和申请材料理解能力</td></tr>
+              <tr><td>A-Level 选科与同步</td><td><span class="tag green">最高</span></td><td>4-10 万</td><td>直接影响成绩与申请专业</td></tr>
+              <tr><td>专业探索项目</td><td><span class="tag blue">高</span></td><td>3-8 万</td><td>降低专业选择错误成本</td></tr>
+              <tr><td>竞赛与背景提升</td><td><span class="tag orange">中高</span></td><td>4-12 万</td><td>用于冲刺层级，不宜盲目堆项目</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="report-page" id="legacy-major">
+        <div class="section-head">
+          <h2>四、专业方向与国家路径</h2>
+          <p>将兴趣、能力、申请难度和未来职业空间放在同一张表里，帮助家长从“想学什么”推进到“值得投入什么”。</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <table>
+              <thead>
+                <tr>
+                  <th>专业方向</th>
+                  <th>兴趣</th>
+                  <th>能力</th>
+                  <th>申请难度</th>
+                  <th>建议</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>商科与管理</td>
+                  <td><span class="tag green">高</span></td>
+                  <td><span class="tag blue">良好</span></td>
+                  <td>中高</td>
+                  <td>建议作为主探索方向，补充经济学阅读和商业案例分析。</td>
+                </tr>
+                <tr>
+                  <td>数据科学</td>
+                  <td><span class="tag blue">中高</span></td>
+                  <td><span class="tag green">高</span></td>
+                  <td>高</td>
+                  <td>可作为冲刺方向，需要提前补充数学建模和编程作品。</td>
+                </tr>
+                <tr>
+                  <td>传媒与传播</td>
+                  <td><span class="tag blue">中</span></td>
+                  <td><span class="tag orange">待提升</span></td>
+                  <td>中</td>
+                  <td>可作为备选，需观察写作表达和作品集投入意愿。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <table>
+              <thead>
+                <tr>
+                  <th>国家/地区</th>
+                  <th>适配度</th>
+                  <th>预算压力</th>
+                  <th>路径建议</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>英国</td>
+                  <td><span class="tag green">高</span></td>
+                  <td>中高</td>
+                  <td>A-Level 主路径，搭配学术英语和专业探索。</td>
+                </tr>
+                <tr>
+                  <td>新加坡</td>
+                  <td><span class="tag blue">中高</span></td>
+                  <td>中高</td>
+                  <td>作为英联邦方向备选，需提高学术竞争力。</td>
+                </tr>
+                <tr>
+                  <td>加拿大</td>
+                  <td><span class="tag orange">中</span></td>
+                  <td>中</td>
+                  <td>OSSD 可作为稳妥备选，但不建议作为第一选择。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="risk">
+        <div class="section-head">
+          <h2>五、风险预警与优先干预</h2>
+          <p>风险表用于说明后续服务的必要性，让家长看到“现在不处理，会在哪些环节付出更高代价”。</p>
+        </div>
+        <div class="risk-grid">
+          <div class="card risk high">
+            <h3>规划清晰度不足</h3>
+            <p class="muted">目标专业尚未收敛，可能导致课程选择和背景提升方向摇摆。</p>
+            <span class="tag red">高优先级</span>
+          </div>
+          <div class="card risk">
+            <h3>心理适应待提升</h3>
+            <p class="muted">面对长期压力容易内耗，建议提前进行海外适应和压力管理训练。</p>
+            <span class="tag orange">中高优先级</span>
+          </div>
+          <div class="card risk">
+            <h3>学术英语深度不足</h3>
+            <p class="muted">日常英语基础较好，但学术阅读和观点写作仍需专项强化。</p>
+            <span class="tag orange">中高优先级</span>
+          </div>
+          <div class="card risk">
+            <h3>活动成果不成体系</h3>
+            <p class="muted">已有兴趣但缺少可用于申请叙事的项目成果和证明材料。</p>
+            <span class="tag blue">中优先级</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="timeline">
+        <div class="section-head">
+          <h2>六、未来 12 个月行动规划</h2>
+          <p>将诊断结论转化为可执行任务，避免家长只得到一份“好看的报告”，却不知道下一步怎么做。</p>
+        </div>
+        <div class="timeline">
+          <div class="step">
+            <time>第 1-2 月</time>
+            <div>
+              <strong>完成课程体系与目标国家确认</strong>
+              <p class="muted">围绕 A-Level 主路径完成选科评估，同时保留 AP/OSSD 作为对照方案。</p>
+            </div>
+            <span class="tag green">路径定稿</span>
+          </div>
+          <div class="step">
+            <time>第 3-5 月</time>
+            <div>
+              <strong>学术英语与专业探索并行</strong>
+              <p class="muted">建立英文阅读材料库，完成 2 个商科或数据方向小型研究任务。</p>
+            </div>
+            <span class="tag blue">能力建设</span>
+          </div>
+          <div class="step">
+            <time>第 6-9 月</time>
+            <div>
+              <strong>形成可申请化成果</strong>
+              <p class="muted">沉淀竞赛、研究、项目展示或社会实践成果，服务后续文书叙事。</p>
+            </div>
+            <span class="tag orange">背景提升</span>
+          </div>
+          <div class="step">
+            <time>第 10-12 月</time>
+            <div>
+              <strong>复盘 ROI 与申请竞争力</strong>
+              <p class="muted">根据阶段成果调整目标院校层级、预算投入和下一年度规划强度。</p>
+            </div>
+            <span class="tag green">策略复盘</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-page" id="service-map">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">18 / Service Map</p>
+            <h2>机构服务地图</h2>
+          </div>
+          <p>服务推荐需要从诊断结论自然推出，而不是在报告末尾硬性销售。</p>
+        </div>
+        <div class="grid-3">
+          <div class="card card-pad"><h3>路径规划</h3><p class="muted">确认国家、体系、选科、预算和目标层级。</p><span class="tag green">立即启动</span></div>
+          <div class="card card-pad"><h3>能力建设</h3><p class="muted">学术英语、课程同步、表达训练和学习习惯。</p><span class="tag blue">3 个月内</span></div>
+          <div class="card card-pad"><h3>申请资产</h3><p class="muted">背景提升、项目成果、文书素材和面试表达。</p><span class="tag orange">6 个月内</span></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="consultant-script">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">19 / Consultant Script</p>
+            <h2>顾问解读话术</h2>
+          </div>
+          <p>顾问需要把复杂报告翻译成家长能做决策的话，而不是逐页念数据。</p>
+        </div>
+        <div class="dense-list">
+          <div class="insight"><b>开场</b><span class="muted">“这份报告重点不是判断孩子好不好，而是判断哪条路径投入产出最高。”</span></div>
+          <div class="insight"><b>解释短板</b><span class="muted">“规划清晰度低不是问题本身，真正风险是它会导致后面所有投入分散。”</span></div>
+          <div class="insight"><b>解释 ROI</b><span class="muted">“我们不是让家庭增加预算，而是帮您判断哪些投入最值得优先做。”</span></div>
+          <div class="insight"><b>收口</b><span class="muted">“下一次会议建议直接把目标国家、课程体系和 12 个月任务定下来。”</span></div>
+        </div>
+      </section>
+
+      <section class="report-page" id="evidence">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">20 / Evidence</p>
+            <h2>数据证据与顾问校准</h2>
+          </div>
+          <p>为了避免报告模板化，系统自动结论必须保留顾问校准区，让机构专业判断真正进入报告。</p>
+        </div>
+        <div class="card">
+          <table>
+            <thead><tr><th>证据来源</th><th>系统结论</th><th>顾问校准</th><th>最终判断</th></tr></thead>
+            <tbody>
+              <tr><td>测评题库</td><td>A-Level 适配最高</td><td>结合英国方向意向确认</td><td>设为主路径</td></tr>
+              <tr><td>家庭信息</td><td>预算支持良好</td><td>建议均衡投入</td><td>不建议高消耗冲刺</td></tr>
+              <tr><td>能力画像</td><td>规划清晰度偏低</td><td>需要专业探索会议</td><td>设为第一优先级</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="report-page" id="decision">
+        <div class="section-head">
+          <div>
+            <p class="page-kicker">21 / Decision Meeting</p>
+            <h2>家庭决策会议议程</h2>
+          </div>
+          <p>报告最终要推动一次高质量会议，让家长、学生和顾问对路径、预算和执行节奏达成共识。</p>
+        </div>
+        <div class="decision-grid">
+          <div class="card decision-card">
+            <h3>会议目标</h3>
+            <p class="muted">把“孩子适合什么”转化为“家庭接下来 12 个月怎么投、投在哪里、如何验收”。</p>
+            <span class="tag green">输出明确决策</span>
+          </div>
+          <div class="card decision-card">
+            <h3>参会角色</h3>
+            <p class="muted">建议学生、父母双方和主规划顾问同时参加，避免后续执行中目标反复。</p>
+            <span class="tag blue">家庭共识优先</span>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="step"><time>15 分钟</time><div><strong>确认目标边界</strong><p class="muted">国家、课程体系、预算和目标院校层级。</p></div><span class="tag blue">共识</span></div>
+          <div class="step"><time>20 分钟</time><div><strong>解释 ROI 方案</strong><p class="muted">对比保守、均衡、冲刺三种投入方式。</p></div><span class="tag green">决策</span></div>
+          <div class="step"><time>20 分钟</time><div><strong>锁定 12 个月任务</strong><p class="muted">把规划落到月份、任务、责任人和验收标准。</p></div><span class="tag orange">执行</span></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <table>
+            <thead><tr><th>会议输出</th><th>具体内容</th><th>验收方式</th></tr></thead>
+            <tbody>
+              <tr><td>路径决策表</td><td>A-Level 主路径，AP/OSSD 作为对照备选</td><td>家庭签字确认或顾问系统确认</td></tr>
+              <tr><td>预算优先级</td><td>先投学术英语、选科同步、专业探索</td><td>形成 3 档预算方案</td></tr>
+              <tr><td>执行责任表</td><td>学生、家长、顾问分别承担任务</td><td>每月复盘一次</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="cta report-page" id="conclusion">
+        <h2>建议进入一对一家庭规划会议</h2>
+        <p>
+          基于当前测评结果，Ray 最值得优先投入的是学术英语、专业方向探索和 A-Level 选科规划。这三项投入能够同时提升申请竞争力、降低路径选择风险，并减少后续无效补课和反复试错的隐性成本。
+        </p>
+        <ul class="conclusion-list">
+          <li><strong>第一优先级：</strong>在 2 周内完成课程体系和选科确认，避免后续课程投入方向摇摆。</li>
+          <li><strong>第二优先级：</strong>用 4 周完成商科、数据、传媒三个方向的专业探索，收敛主申请叙事。</li>
+          <li><strong>第三优先级：</strong>启动学术英语专项，重点训练阅读、论证写作和 presentation 表达。</li>
+          <li><strong>第四优先级：</strong>建立月度 ROI 复盘机制，持续判断每项投入是否带来竞争力增益。</li>
+        </ul>
+      </section>
+      </div>
+    </main>
+
+    <script>
+      const levelRules = [
+        { min: 85, level: "优势明显" },
+        { min: 70, level: "良好" },
+        { min: 55, level: "待提升" },
+        { min: 0, level: "风险项" },
+      ];
+
+      const hexagonDimensions = [
+        ["language", "语言能力"],
+        ["academic", "学术学习力"],
+        ["subjectPotential", "学科潜力"],
+        ["adaptability", "心理适应力"],
+        ["planningClarity", "规划清晰度"],
+        ["familySupport", "家庭支持度"],
+      ];
+
+      function getLevel(score) {
+        return levelRules.find((rule) => score >= rule.min).level;
+      }
+
+      function calculateHexagonProfile(sourceScores) {
+        return hexagonDimensions.map(([key, label]) => ({
+          key,
+          label,
+          score: clampScore(sourceScores[key]),
+          level: getLevel(clampScore(sourceScores[key])),
+        }));
+      }
+
+      function rankCourseSystems(sourceScores, context = {}) {
+        const region = context.preferredRegion ?? "";
+        const systems = [
+          {
+            system: "A-Level",
+            score:
+              sourceScores.language * 0.28 +
+              sourceScores.academic * 0.24 +
+              sourceScores.subjectPotential * 0.2 +
+              sourceScores.selfDiscipline * 0.18 +
+              regionBonus(region, ["英国", "新加坡", "中国香港"]) * 0.1,
+            reason: "单科深入、路径清晰，适合有优势学科且目标英联邦方向的学生。",
+          },
+          {
+            system: "AP",
+            score:
+              sourceScores.language * 0.26 +
+              sourceScores.academic * 0.22 +
+              sourceScores.subjectPotential * 0.24 +
+              sourceScores.pressureTolerance * 0.16 +
+              regionBonus(region, ["美国"]) * 0.12,
+            reason: "适合英语与学科能力较强、愿意通过多门考试提升申请竞争力的学生。",
+          },
+          {
+            system: "IB",
+            score:
+              sourceScores.language * 0.22 +
+              sourceScores.academic * 0.2 +
+              sourceScores.humanitiesWriting * 0.2 +
+              sourceScores.selfDiscipline * 0.2 +
+              sourceScores.adaptability * 0.18,
+            reason: "适合文理均衡、自律强、能承受长期项目和高强度写作的学生。",
+          },
+          {
+            system: "OSSD",
+            score:
+              sourceScores.language * 0.2 +
+              (100 - sourceScores.pressureTolerance) * 0.2 +
+              sourceScores.selfDiscipline * 0.16 +
+              sourceScores.familySupport * 0.18 +
+              regionBonus(region, ["加拿大"]) * 0.26,
+            reason: "适合希望降低一次性考试压力、偏好过程性评价和加拿大方向的学生。",
+          },
+          {
+            system: "国内公立",
+            score:
+              sourceScores.academic * 0.26 +
+              sourceScores.subjectPotential * 0.22 +
+              sourceScores.pressureTolerance * 0.22 +
+              (100 - sourceScores.planningClarity) * 0.12 +
+              (region ? 58 : 75) * 0.18,
+            reason: "适合高考路径稳定、抗压较强，且家庭仍希望保留国内升学确定性的学生。",
+          },
+        ];
+
+        return systems
+          .map((item) => ({ ...item, score: Math.round(item.score) }))
+          .sort((a, b) => b.score - a.score)
+          .map((item, index) => ({ ...item, tier: recommendationTier(item.score, index) }));
+      }
+
+      function calculateRoiPlans({ scores: sourceScores, budgetLevel, monthsToApply }) {
+        const baseGain = weightedAverage([
+          [sourceScores.language, 0.2],
+          [sourceScores.academic, 0.18],
+          [sourceScores.subjectPotential, 0.16],
+          [sourceScores.selfDiscipline, 0.16],
+          [sourceScores.planningClarity, 0.14],
+          [sourceScores.familySupport, 0.16],
+        ]);
+        const urgency = monthsToApply <= 12 ? 86 : monthsToApply <= 24 ? 74 : 62;
+        const certaintyNeed = 100 - sourceScores.planningClarity;
+        const configs = [
+          { name: "保守型规划", cost: { min: 6, max: 12 }, multiplier: 0.82, riskReduction: 66, assetGain: 58, summary: "优先降低路径错误和无效补课成本，适合预算敏感、目标稳妥的家庭。" },
+          { name: "均衡型规划", cost: { min: 12, max: 24 }, multiplier: 1, riskReduction: 78, assetGain: 74, summary: "兼顾录取概率、专业匹配和背景提升，适合多数家庭作为主方案。", recommended: true },
+          { name: "冲刺型规划", cost: { min: 24, max: 45 }, multiplier: 1.12, riskReduction: 84, assetGain: 86, summary: "最大化申请竞争力和院校上限，适合目标名校且执行力较强的家庭。" },
+        ];
+
+        return configs.map((config) => {
+          const competitivenessGain = clampScore(baseGain * config.multiplier);
+          const timeSaving = clampScore((urgency + certaintyNeed) / 2);
+          const decisionCertainty = clampScore((sourceScores.familySupport + certaintyNeed) / 2);
+          const numerator =
+            competitivenessGain * 0.35 +
+            config.riskReduction * 0.25 +
+            timeSaving * 0.15 +
+            config.assetGain * 0.15 +
+            decisionCertainty * 0.1;
+
+          return {
+            name: config.name,
+            estimatedCost: config.cost,
+            roiIndex: Math.round((numerator / Math.max(1, budgetLevel)) * 3.2),
+            competitivenessGain: Math.round(competitivenessGain),
+            riskReduction: config.riskReduction,
+            timeSaving: Math.round(timeSaving),
+            assetGain: config.assetGain,
+            recommended: Boolean(config.recommended),
+            summary: config.summary,
+          };
+        });
+      }
+
+      function regionBonus(region, targets) {
+        return targets.includes(region) ? 100 : 60;
+      }
+
+      function recommendationTier(score, index) {
+        if (index === 0 && score >= 75) return "首选推荐";
+        if (score >= 68) return "备选推荐";
+        if (score >= 58) return "谨慎选择";
+        return "不建议优先";
+      }
+
+      function weightedAverage(items) {
+        return items.reduce((sum, [score, weight]) => sum + clampScore(score) * weight, 0);
+      }
+
+      function clampScore(value) {
+        return Math.max(0, Math.min(100, Math.round(value ?? 0)));
+      }
+
+      const scores = {
+        language: 78,
+        academic: 82,
+        subjectPotential: 74,
+        adaptability: 66,
+        planningClarity: 58,
+        familySupport: 85,
+        humanitiesWriting: 71,
+        selfDiscipline: 79,
+        pressureTolerance: 68,
+      };
+
+      const profile = calculateHexagonProfile(scores);
+      const courses = rankCourseSystems(scores, { preferredRegion: "英国" });
+      const roiPlans = calculateRoiPlans({
+        scores,
+        targetTier: "QS Top 50",
+        budgetLevel: 3,
+        monthsToApply: 18,
+      });
+
+      document.querySelector("#heroFit").textContent = courses[0].score;
+      document.querySelector("#heroRoi").textContent = roiPlans.find((plan) => plan.recommended).roiIndex;
+
+      renderSummary(profile);
+      renderHexagon(profile);
+      renderCourseRanking(courses);
+      renderRoiPlans(roiPlans);
+      setupScrollExperience();
+      animateCounters();
+      drawStrategyCanvas();
+
+      function renderSummary(items) {
+        document.querySelector("#summaryMetrics").innerHTML = items
+          .map(
+            (item) => `
+              <div class="metric-row">
+                <span>${item.label}</span>
+                <div class="track"><div class="fill" style="--value:${item.score}%"></div></div>
+                <strong>${item.score}</strong>
+              </div>
+            `,
+          )
+          .join("");
+      }
+
+      function renderHexagon(items) {
+        const svg = document.querySelector("#hexChart");
+        const center = 180;
+        const maxRadius = 118;
+        const axis = items.map((item, index) => {
+          const angle = (-90 + index * 60) * (Math.PI / 180);
+          return {
+            ...item,
+            angle,
+            outer: point(center, center, maxRadius, angle),
+            value: point(center, center, maxRadius * (item.score / 100), angle),
+            labelPoint: point(center, center, maxRadius + 34, angle),
+          };
+        });
+
+        const rings = [0.25, 0.5, 0.75, 1]
+          .map((scale) => `<polygon points="${axis.map((item) => formatPoint(point(center, center, maxRadius * scale, item.angle))).join(" ")}" fill="none" stroke="#dce5f2" stroke-width="1"/>`)
+          .join("");
+        const spokes = axis
+          .map((item) => `<line x1="${center}" y1="${center}" x2="${item.outer.x}" y2="${item.outer.y}" stroke="#dce5f2" stroke-width="1"/>`)
+          .join("");
+        const area = `<polygon points="${axis.map((item) => formatPoint(item.value)).join(" ")}" fill="rgba(21,89,209,.22)" stroke="#1559d1" stroke-width="3"/>`;
+        const dots = axis
+          .map((item) => `<circle cx="${item.value.x}" cy="${item.value.y}" r="4.5" fill="#1559d1"/>`)
+          .join("");
+        const labels = axis
+          .map(
+            (item) => `<text class="label-small" x="${item.labelPoint.x}" y="${item.labelPoint.y}" text-anchor="middle" dominant-baseline="middle">${item.label}</text>`,
+          )
+          .join("");
+
+        svg.innerHTML = `${rings}${spokes}${area}${dots}${labels}<circle cx="${center}" cy="${center}" r="3" fill="#08275a"/>`;
+
+        const influence = {
+          language: "可进入标化备考阶段，但学术阅读仍需强化",
+          academic: "适合中高强度国际课程体系",
+          subjectPotential: "可优先探索商科、数据、工程交叉方向",
+          adaptability: "需要提前进行独立生活和压力管理准备",
+          planningClarity: "需要通过专业探索降低选择风险",
+          familySupport: "具备持续投入和长期规划基础",
+        };
+
+        document.querySelector("#hexTable").innerHTML = items
+          .map(
+            (item) => `
+              <tr>
+                <td>${item.label}</td>
+                <td><span class="score-pill">${item.score}</span></td>
+                <td>${item.level}</td>
+                <td>${influence[item.key]}</td>
+              </tr>
+            `,
+          )
+          .join("");
+      }
+
+      function renderCourseRanking(items) {
+        document.querySelector("#courseBars").innerHTML = items
+          .map(
+            (item) => `
+              <div class="course-row">
+                <strong>${item.system}</strong>
+                <div class="bar"><span style="--value:${item.score}%"></span></div>
+                <span class="tag ${tagColor(item.tier)}">${item.score} · ${item.tier}</span>
+              </div>
+            `,
+          )
+          .join("");
+
+        document.querySelector("#courseTable").innerHTML = items
+          .map(
+            (item) => `
+              <tr>
+                <td><strong>${item.system}</strong></td>
+                <td>${item.score}</td>
+                <td><span class="tag ${tagColor(item.tier)}">${item.tier}</span></td>
+                <td>${item.reason}</td>
+              </tr>
+            `,
+          )
+          .join("");
+      }
+
+      function renderRoiPlans(plans) {
+        document.querySelector("#roiCards").innerHTML = plans
+          .map(
+            (plan) => `
+              <article class="card card-pad roi-card ${plan.recommended ? "recommended" : ""}">
+                <h3>${plan.name}${plan.recommended ? '<span class="tag blue">推荐</span>' : ""}</h3>
+                <div class="roi-index">${plan.roiIndex}</div>
+                <p class="muted">${plan.summary}</p>
+                <div class="roi-meta">
+                  <div class="mini"><b>${plan.estimatedCost.min}-${plan.estimatedCost.max} 万</b><span class="muted">预计投入</span></div>
+                  <div class="mini"><b>${plan.competitivenessGain}</b><span class="muted">竞争力增益</span></div>
+                  <div class="mini"><b>${plan.riskReduction}</b><span class="muted">风险降低</span></div>
+                  <div class="mini"><b>${plan.assetGain}</b><span class="muted">能力沉淀</span></div>
+                </div>
+                <span class="tag ${plan.recommended ? "green" : "blue"}">ROI 指数 ${plan.roiIndex}</span>
+              </article>
+            `,
+          )
+          .join("");
+      }
+
+      function point(cx, cy, radius, angle) {
+        return {
+          x: Math.round((cx + radius * Math.cos(angle)) * 100) / 100,
+          y: Math.round((cy + radius * Math.sin(angle)) * 100) / 100,
+        };
+      }
+
+      function formatPoint(item) {
+        return `${item.x},${item.y}`;
+      }
+
+      function tagColor(text) {
+        if (text.includes("首选")) return "green";
+        if (text.includes("备选")) return "blue";
+        if (text.includes("谨慎")) return "orange";
+        return "red";
+      }
+
+      function setupScrollExperience() {
+        const pages = [...document.querySelectorAll(".report-page")];
+        const links = [...document.querySelectorAll(".side-toc a")];
+        const linkById = new Map(links.map((link) => [link.getAttribute("href").slice(1), link]));
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                activatePage(entry.target);
+              }
+            });
+          },
+          { rootMargin: "-12% 0px -42% 0px", threshold: 0.01 },
+        );
+
+        pages.forEach((page) => observer.observe(page));
+        window.addEventListener("hashchange", activateHashTarget);
+        activateHashTarget();
+        requestAnimationFrame(activateHashTarget);
+        setTimeout(activateHashTarget, 450);
+
+        function activateHashTarget() {
+          const target = document.querySelector(location.hash);
+          if (target?.classList.contains("report-page")) activatePage(target);
+        }
+
+        function activatePage(page) {
+          page.classList.add("in-view");
+          page.querySelectorAll("tbody tr").forEach((row, rowIndex) => {
+            row.style.transitionDelay = `${Math.min(rowIndex * 55, 330)}ms`;
+            row.classList.add("row-visible");
+          });
+          links.forEach((link) => link.classList.remove("active"));
+          linkById.get(page.id)?.classList.add("active");
+        }
+      }
+
+      function animateCounters() {
+        document.querySelectorAll(".data-counter").forEach((counter) => {
+          const target = Number(counter.dataset.target ?? 0);
+          const startedAt = performance.now();
+          const duration = 900;
+
+          function tick(now) {
+            const progress = Math.min(1, (now - startedAt) / duration);
+            counter.textContent = Math.round(target * easeOut(progress));
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
+        });
+      }
+
+      function drawStrategyCanvas() {
+        const canvas = document.querySelector("#strategyCanvas");
+        if (!canvas) return;
+
+        const context = canvas.getContext("2d");
+        const nodes = [
+          { x: 0.16, y: 0.32, label: "测评" },
+          { x: 0.36, y: 0.64, label: "能力" },
+          { x: 0.54, y: 0.26, label: "路径" },
+          { x: 0.72, y: 0.58, label: "ROI" },
+          { x: 0.86, y: 0.34, label: "执行" },
+        ];
+        let frame = 0;
+
+        function render() {
+          const rect = canvas.getBoundingClientRect();
+          const ratio = window.devicePixelRatio || 1;
+          canvas.width = Math.round(rect.width * ratio);
+          canvas.height = Math.round(rect.height * ratio);
+          context.setTransform(ratio, 0, 0, ratio, 0, 0);
+          context.clearRect(0, 0, rect.width, rect.height);
+
+          context.strokeStyle = "rgba(255,255,255,.22)";
+          context.lineWidth = 1;
+          for (let index = 0; index < nodes.length - 1; index += 1) {
+            const start = nodes[index];
+            const end = nodes[index + 1];
+            context.beginPath();
+            context.moveTo(start.x * rect.width, start.y * rect.height);
+            context.lineTo(end.x * rect.width, end.y * rect.height);
+            context.stroke();
+          }
+
+          nodes.forEach((node, index) => {
+            const pulse = 1 + Math.sin(frame / 24 + index) * 0.12;
+            const x = node.x * rect.width;
+            const y = node.y * rect.height;
+            context.beginPath();
+            context.arc(x, y, 18 * pulse, 0, Math.PI * 2);
+            context.fillStyle = "rgba(255,255,255,.18)";
+            context.fill();
+            context.beginPath();
+            context.arc(x, y, 6, 0, Math.PI * 2);
+            context.fillStyle = "#ffffff";
+            context.fill();
+            context.fillStyle = "rgba(255,255,255,.84)";
+            context.font = "700 13px sans-serif";
+            context.fillText(node.label, x + 16, y + 4);
+          });
+
+          frame += 1;
+          requestAnimationFrame(render);
+        }
+
+        render();
+      }
+
+      function easeOut(value) {
+        return 1 - Math.pow(1 - value, 3);
+      }
+    </script>
+  </body>
+</html>
